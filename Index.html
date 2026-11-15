@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRX | Vector Risk Exclusive — Toranomon, Tokyo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#070d19', /* Compromis parfait : Bleu Saphir Abyssal */
+                        cardBg: '#0d172a', /* Bleu Nuit profond pour les encarts */
+                        gold: {
+                            DEFAULT: '#c5a059',
+                            light: '#dfbe7d',
+                            dark: '#9e7b39',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Courier New', monospace]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #070d19;
+            color: #94a3b8;
+            overflow-x: hidden;
+            letter-spacing: 0.05em;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.02em;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Correction visibilité des options de menu déroulant sur Windows/Chrome */
+        select option {
+            background-color: #070d19;
+            color: #ffffff;
+        }
+/* Verrouillage du thème sombre sur tous les champs du formulaire (y compris autofill) */
+        input, select, textarea {
+            background-color: #070d19 !important;
+            color: #ffffff !important;
+            color-scheme: dark;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #64748b !important;
+            opacity: 1;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-text-fill-color: #ffffff !important;
+            -webkit-box-shadow: 0 0 0px 1000px #070d19 inset !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        .grid-lines {
+            background-image: linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .editorial-border {
+            border: 1px solid rgba(197, 160, 89, 0.25);
+        }
+
+        /* Retouche photo automatique */
+        .vrx-photo {
+            filter: grayscale(85%) contrast(115%) brightness(90%);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+        }
+        .vrx-photo:hover {
+            transform: scale(1.04);
+            filter: grayscale(15%) contrast(110%) brightness(100%);
+        }
+        .vrx-photo-hero {
+            filter: grayscale(40%) contrast(115%) brightness(85%);
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s ease;
+        }
+        .vrx-photo-hero:hover {
+            transform: scale(1.02);
+            filter: grayscale(0%) contrast(110%) brightness(95%);
+        }
+
+        /* Intro Coffre Architectural VRX */
+        #vault-intro {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #vault-intro.unlocked {
+            pointer-events: none;
+        }
+        .vault-door-left, .vault-door-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-color: #050912;
+            z-index: 10;
+            transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .vault-door-left {
+            left: 0;
+            border-right: 1px solid rgba(197, 160, 89, 0.3);
+            background-image: radial-gradient(circle at 100% 50%, rgba(197, 160, 89, 0.06) 0%, transparent 60%);
+        }
+        .vault-door-right {
+            right: 0;
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+            background-image: radial-gradient(circle at 0% 50%, rgba(197, 160, 89, 0.06) 0%, transparent 60%);
+        }
+        #vault-intro.unlocked .vault-door-left {
+            transform: translateX(-100%);
+        }
+        #vault-intro.unlocked .vault-door-right {
+            transform: translateX(100%);
+        }
+        .vault-centerpiece {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #vault-intro.unlocked .vault-centerpiece {
+            opacity: 0;
+            transform: scale(1.15);
+        }
+        .laser-box {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLaser 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .laser-diamond {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: drawLaser 2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+        @keyframes drawLaser {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes scanLine {
+            0% { top: 0%; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .laser-scanner {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c5a059, transparent);
+            box-shadow: 0 0 15px #c5a059;
+            animation: scanLine 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-300 antialiased selection:bg-gold selection:text-darkBg grid-lines">
+
+    <!-- INTRO DU COFFRE ARCHITECTURAL VRX -->
+    <div id="vault-intro">
+        <div class="vault-door-left"></div>
+        <div class="vault-door-right"></div>
+        
+        <div class="vault-centerpiece px-6 text-center">
+            <div class="relative w-56 h-56 flex items-center justify-center mb-8">
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
+                    <rect x="20" y="20" width="160" height="160" stroke="#c5a059" stroke-width="1" stroke-opacity="0.6" class="laser-box"/>
+                    <polygon points="100,10 190,100 100,190 10,100" stroke="#dfbe7d" stroke-width="1.5" class="laser-diamond"/>
+                    <line x1="15" y1="20" x2="25" y2="20" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="20" y1="15" x2="20" y2="25" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="175" y1="20" x2="185" y2="20" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="180" y1="15" x2="180" y2="25" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="15" y1="180" x2="25" y2="180" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="20" y1="175" x2="20" y2="185" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="175" y1="180" x2="185" y2="180" stroke="#c5a059" stroke-width="2"/>
+                    <line x1="180" y1="175" x2="180" y2="185" stroke="#c5a059" stroke-width="2"/>
+                </svg>
+
+                <div class="w-40 h-40 relative overflow-hidden flex items-center justify-center bg-[#070d19]/90 border border-gold/20 shadow-2xl">
+                    <div class="laser-scanner"></div>
+                    <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-14 w-auto object-contain relative z-10">
+                </div>
+            </div>
+
+            <div class="space-y-3 font-mono">
+                <p class="text-[10px] uppercase tracking-[0.5em] text-gold font-semibold">VECTOR RISK EXCLUSIVE</p>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+                    <p id="vault-status" class="text-[10px] uppercase tracking-[0.35em] text-slate-400">AUTHENTICATING CLEARANCE...</p>
+                </div>
+            </div>
+
+            <button onclick="unlockVault()" class="mt-12 text-[9px] font-mono uppercase tracking-[0.3em] text-slate-500 hover:text-gold transition-colors border border-white/10 hover:border-gold/40 px-5 py-2 bg-[#070d19]/80">
+                [ ENTER DIRECTLY ]
+            </button>
+        </div>
+    </div>
+
+    <!-- Header Architectural -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 h-28 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-4 group">
+                <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity">
+                <div class="h-6 w-[1px] bg-white/15"></div>
+                <div class="flex flex-col">
+                    <span class="font-serif tracking-[0.3em] text-sm text-white uppercase font-medium">VRX Exclusive</span>
+                    <span class="text-[7px] tracking-[0.4em] uppercase text-gold font-mono">Vector Risk Management</span>
+                </div>
+            </a>
+           
+            <nav class="hidden lg:flex items-center space-x-12 text-[11px] tracking-[0.25em] uppercase font-light text-slate-300">
+                <a href="#expertise" class="hover:text-gold transition-colors" data-en="Expertise" data-jp="専門分野" data-fr="Expertise">Expertise</a>
+                <a href="#technology" class="hover:text-gold transition-colors" data-en="Engineering" data-jp="エンジニアリング" data-fr="Ingénierie">Engineering</a>
+                <a href="#operations" class="hover:text-gold transition-colors" data-en="Headquarters" data-jp="拠点" data-fr="Siège">Headquarters</a>
+                <a href="Portal.html" class="text-gold hover:underline font-mono" data-en="Portal [Secure]" data-jp="ポータル [セキュア]" data-fr="Portail [Sécurisé]">Portal [Secure]</a>
+            </nav>
+
+            <div class="flex items-center gap-6">
+                <select id="lang-select" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
+                    <option value="en" class="bg-darkBg text-gold">EN</option>
+                    <option value="jp" class="bg-darkBg text-gold">JP</option>
+                    <option value="fr" class="bg-darkBg text-gold">FR</option>
+                </select>
+                <a href="#contact" class="hidden sm:inline-block px-6 py-2.5 editorial-border text-gold text-[11px] tracking-[0.25em] uppercase hover:bg-gold hover:text-darkBg transition-all duration-500 font-mono" data-en="Inquire" data-jp="お問い合わせ" data-fr="Contact">Inquire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Asymétrique -->
+    <section id="home" class="min-h-screen flex items-center pt-32 pb-20 px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+            <div class="lg:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-3 text-[10px] uppercase font-mono tracking-[0.4em] text-gold">
+                    <span class="w-8 h-[1px] bg-gold"></span>
+                    <span data-en="Toranomon, Minato-ku, Tokyo" data-jp="東京都港区虎ノ門" data-fr="Toranomon, Minato-ku, Tokyo">Toranomon, Minato-ku, Tokyo</span>
+                </div>
+               
+                <!-- Titre Principal avec Traduction dynamique -->
+                <h1 class="text-5xl sm:text-7xl font-serif text-white font-normal leading-[1.1]"
+                    data-en="The Architecture <br>of <span class='italic font-light text-gold'>Absolute</span> Protection."
+                    data-jp="絶対的な保護の<br><span class='italic font-light text-gold'>アーキテクチャ</span>。"
+                    data-fr="L'architecture <br>d'une protection <span class='italic font-light text-gold'>absolue</span>.">
+                    The Architecture <br>of <span class="italic font-light text-gold">Absolute</span> Protection.
+                </h1>
+               
+                <p class="text-sm sm:text-base text-slate-300 font-light max-w-xl leading-relaxed" 
+                   data-en="Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan." 
+                   data-jp="UHNWIファミリー、トップファッションハウス、エリートジュエリーメゾンに向けた妥協のないリスク管理、エリート近接警護、洗練されたセキュリティエンジニアリング。" 
+                   data-fr="Gestion des risques sans compromis, protection rapprochée d'élite et ingénierie de sécurité pour les familles UHNWI, grandes maisons de mode et joailleries d'exception au Japon.">
+                    Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan.
+                </p>
+
+                <div class="flex items-center gap-8 pt-4">
+                    <a href="#expertise" class="text-xs uppercase tracking-[0.3em] text-white hover:text-gold transition-colors flex items-center gap-3 group font-mono">
+                        <span data-en="Discover Divisions" data-jp="部門を見る" data-fr="Découvrir les divisions">Discover Divisions</span>
+                        <i class="fa-solid fa-arrow-right text-gold transform group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visuel éditorial Azabudai Hills -->
+            <div class="lg:col-span-5 relative">
+                <div class="editorial-border p-4 bg-cardBg/80 relative shadow-2xl overflow-hidden">
+                    <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-gold pointer-events-none z-20"></div>
+                    <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-gold pointer-events-none z-20"></div>
+                    <div class="overflow-hidden">
+                        <img src="PXL_20251008_082539615.MP.jpg" alt="Tokyo Toranomon Skyline" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
+                    </div>
+                    <div class="absolute bottom-8 left-8 bg-darkBg/95 px-4 py-2 border border-gold/30 text-[9px] font-mono tracking-widest text-gold uppercase shadow-lg z-20">
+                        FIG. 01 — MINATO-KU SECTOR, TOKYO
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Expertise -->
+    <section id="expertise" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-6">
+            <div>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block mb-3">01 // Divisions</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Specialized Mandates" data-jp="専門的使命" data-fr="Mandats Spécialisés">Specialized Mandates</h2>
+            </div>
+            <p class="text-xs font-light text-slate-300 max-w-sm" data-en="Precision deployments curated for environments where error is non-existent." data-jp="ミスが許されない環境のために厳選された精密配備。" data-fr="Des déploiements de précision conçus pour des environnements où l'erreur n'a pas sa place.">
+                Precision deployments curated for environments where error is non-existent.
+            </p>
+        </div>
+
+        <div class="space-y-28">
+            
+            <!-- Division A : Luxury Events & High-End Retail -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
+                    <div class="overflow-hidden">
+                        <img src="Clement.jpg" alt="Brand Protection Setup" class="w-full h-[350px] object-cover object-center vrx-photo">
+                    </div>
+                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                        EXHIBITION HALL & BRAND PROTECTION
+                    </span>
+                </div>
+                <div class="lg:col-span-7 space-y-4 lg:pl-12">
+                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division A</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Luxury Events & High-End Retail" data-jp="ラグジュアリーイベント・高級小売" data-fr="Événements de Luxe & Retail">Luxury Events & High-End Retail</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Discrete yet absolute protection for high-end retail flagships, private jewelry viewings, product launches, and exclusive fashion showcases across Tokyo's most prestigious venues." data-jp="東京の最も格式高い会場や高級リテールフラッグシップ、ジュエリーのプライベート鑑賞会、製品発表会、ファッションショーのための目立たずかつ絶対的な保護。" data-fr="Protection discrète mais absolue pour les flagships haut de gamme, présentations privées de haute joaillerie, lancements et défilés dans les lieux les plus prestigieux de Tokyo.">
+                        Discrete yet absolute protection for high-end retail flagships, private jewelry viewings, product launches, and exclusive fashion showcases across Tokyo's most prestigious venues.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Division B : Large-Scale Operations -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
+                    <div class="overflow-hidden">
+                        <img src="PXL_20260423_112326523.MP.jpg" alt="Large Scale Operations" class="w-full h-[350px] object-cover object-center vrx-photo">
+                    </div>
+                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                        ACCESS & SECTOR CONTROL
+                    </span>
+                </div>
+                <div class="lg:col-span-7 lg:order-1 space-y-4 lg:pr-12">
+                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division B</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Large-Scale Operations" data-jp="大規模オペレーション" data-fr="Opérations à Grande Échelle">Large-Scale Operations</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="High-intensity crowd control, complex multi-post security deployment, and real-time tactical coordination for major live entertainment, exhibitions, and massive corporate summits." data-jp="主要なライブエンターテインメント、展示会、大規模なコーポレートサミットに向けた、高強度の群衆管理、複雑なマルチポスト警備配備、リアルタイムの戦術調整。" data-fr="Contrôle de flux à haute intensité, déploiement multi-postes complexe et coordination tactique en temps réel pour grands événements live, expositions et sommets d'entreprise.">
+                        High-intensity crowd control, complex multi-post security deployment, and real-time tactical coordination for major live entertainment, exhibitions, and massive corporate summits.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Division C : Technology & Equipment Setup -->
+            <div id="technology" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
+                    <div class="overflow-hidden">
+                        <img src="PXL_20250528_122741044.MP.jpg" alt="Vaults & CCTV Command Setup" class="w-full h-[350px] object-cover object-right vrx-photo">
+                    </div>
+                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                        VAULT & CCTV COMMAND RIGGING
+                    </span>
+                </div>
+                <div class="lg:col-span-7 space-y-4 lg:pl-12">
+                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division C</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Technology & Equipment Setup" data-jp="テクノロジー・機材設置" data-fr="Déploiement Tech & Équipements">Technology & Equipment Setup</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Rapid deployment and calibration of advanced security hardware: high-security vaults, CCTV systems, NVR storage units, and robust PoE switching grids." data-jp="高セキュリティ金庫、CCTVシステム、NVRストレージユニット、堅牢なPoEスイッチンググリッドなど、高度なセキュリティハードウェアの迅速な配備とキャリブレーション。" data-fr="Déploiement et étalonnage rapides de matériel de sécurité avancé : coffres-forts haute sécurité, systèmes CCTV, unités NVR et réseaux PoE.">
+                        Rapid deployment and calibration of advanced security hardware: high-security vaults, CCTV systems, NVR storage units, and robust PoE switching grids.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Division D : Security Audits & Executive Reports -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
+                    <div class="overflow-hidden text-right">
+                        <img src="PXL_20250827_202542918.jpg" alt="Security Blueprints and Audits" class="w-full h-[350px] object-cover object-left vrx-photo">
+                    </div>
+                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                        TVRA BLUEPRINT & ARCHITECTURE
+                    </span>
+                </div>
+                <div class="lg:col-span-7 lg:order-1 space-y-4 lg:pr-12">
+                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division D</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Security Audits & Executive Reports" data-jp="セキュリティ監査・エグゼクティブレポート" data-fr="Audits & Rapports de Sécurité">Security Audits & Executive Reports</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Comprehensive security blueprints, camera field-of-view engineering, threat & vulnerability assessments (TVRA), and rigorous compliance reporting aligned with Japanese legal statutes (Article 19)." data-jp="日本の法律（第19条）に準拠した、網羅的なセキュリティ設計図、カメラ視野角設計、脅威・脆弱性評価（TVRA）、厳格なコンプライアンスレポートの作成。" data-fr="Plans de sécurité exhaustifs, ingénierie des champs de vision caméras, évaluations des menaces (TVRA) et rapports de conformité rigoureux alignés sur l'article 19.">
+                        Comprehensive security blueprints, camera field-of-view engineering, threat & vulnerability assessments (TVRA), and rigorous compliance reporting aligned with Japanese legal statutes (Article 19).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Division E : UHNWI & Close Protection -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
+                    <div class="overflow-hidden">
+                        <img src="PXL_20250608_110555505.jpg" alt="Executive Close Protection" class="w-full h-[350px] object-cover object-top vrx-photo">
+                    </div>
+                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                        EXECUTIVE CLOSE PROTECTION
+                    </span>
+                </div>
+                <div class="lg:col-span-7 space-y-4 lg:pl-12">
+                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division E</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="UHNWI, Family Offices & Executive Close Protection" data-jp="UHNWI・ファミリーオフィス・エグゼクティブ近接警護" data-fr="Protection Rapprochée pour UHNWI & Family Offices">UHNWI, Family Offices & Executive Close Protection</h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="World-class close protection details tailored for UHNWI families, global executives, elite advisory firms, and visiting dignitaries. Flawless coordination, secure transport, and absolute personal safety across Japan." data-jp="UHNWIファミリー、グローバルエグゼクティブ、エリート諮問機関、来日要人に向けた世界最高水準の近接警護。日本国内における完璧な調整、セキュア送迎、絶対的な個人の安全確保。" data-fr="Protection rapprochée sur mesure pour les familles UHNWI, dirigeants mondiaux, cabinets d'élite et dignitaires. Coordination parfaite, transport sécurisé et sécurité absolue au Japon.">
+                        World-class close protection details tailored for UHNWI families, global executives, elite advisory firms, and visiting dignitaries. Flawless coordination, secure transport, and absolute personal safety across Japan.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Headquarters & Tactical Fleet Section -->
+    <section id="operations" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/10">
+        <div class="editorial-border p-8 lg:p-16 bg-cardBg/60 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">02 // Institutional Heritage</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white" data-en="Toranomon Headquarters, Tokyo" data-jp="東京・虎ノ門本社" data-fr="Siège de Toranomon, Tokyo">Toranomon Headquarters, Tokyo</h2>
+                <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Headquartered near the National Police Agency and Ministry of Defense in Toranomon, Minato-ku, Tokyo (tracing its origins back to Spectrum Asia). Backed by decades of combined international security expertise, the VRX division was launched in April 2026 to redefine high-end elite protection." data-jp="港区虎ノ門（警察庁・防衛省近郊）に本社を構え（前身はSpectrum Asia）、長年の国際セキュリティの専門知識に裏打ちされたVRX部門は、2026年4月にハイエンドエリートプロテクションの再定義を目指して設立されました。" data-fr="Basé à Toranomon, Minato-ku, Tokyo (proche de l'Agence Nationale de la Police et du Ministère de la Défense, héritier de Spectrum Asia). Fort de décennies d'expertise, la division VRX a été lancée en avril 2026.">
+                    Headquartered near the National Police Agency and Ministry of Defense in Toranomon, Minato-ku, Tokyo (tracing its origins back to Spectrum Asia). Backed by decades of combined international security expertise, the VRX division was launched in April 2026 to redefine high-end elite protection.
+                </p>
+            </div>
+
+            <!-- Photo de mobilité urbaine / VIP Transport -->
+            <div class="lg:col-span-3 overflow-hidden editorial-border h-64 relative">
+                <img src="IMG-20241029-WA0017.jpg" alt="Tactical Urban Mobility" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    URBAN MOBILITY & ESCORT
+                </span>
+            </div>
+
+            <div class="lg:col-span-4 space-y-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">03 // Digital Infrastructure</span>
+                <h3 class="text-xl font-serif text-white" data-en="VRX Portal Ecosystem" data-jp="VRXポータルエコシステム" data-fr="Écosystème du Portail VRX">VRX Portal Ecosystem</h3>
+                <p class="text-xs text-slate-300 font-light leading-relaxed" data-en="Our agents, clients, and administrators operate on a centralized cloud portal featuring live incident tracking, contract management, and secure encrypted comms." data-jp="当社のエージェント、クライアント、管理者は、リアルタイムのインシデント追跡、契約管理、セキュアな暗号化通信を備えた集中型クラウドポータルで稼働しています。" data-fr="Nos agents, clients et administrateurs opèrent sur un portail centralisé avec suivi d'incidents en direct, gestion des contrats et communications chiffrées.">
+                    Our agents, clients, and administrators operate on a centralized cloud portal featuring live incident tracking, contract management, and secure encrypted comms.
+                </p>
+                <div class="pt-2">
+                    <a href="Portal.html" class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-gold hover:text-white transition-colors font-mono">
+                        <span data-en="Access Portal Dashboard" data-jp="ポータルダッシュボードにアクセス" data-fr="Accéder au Tableau de Bord">Access Portal Dashboard</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Éditorial -->
+    <section id="contact" class="py-32 px-8 max-w-4xl mx-auto border-t border-white/10">
+        <div class="text-center space-y-6 mb-16">
+            <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">04 // Confidential Protocol</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Initiate a Confidential Consultation" data-jp="機密相談の開始" data-fr="Initier une Consultation Confidentielle">Initiate a Confidential Consultation</h2>
+        </div>
+
+        <form id="contact-form" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Principal / Corporate Entity" data-jp="プリンシパル／法人名" data-fr="Mandataire / Entité">Principal / Corporate Entity</label>
+                    <input type="text" id="contact-entity" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Name or Organization" data-jp="氏名または組織名" data-fr="Nom ou Organisation" placeholder="Name or Organization">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Secure Email" data-jp="セキュアメール" data-fr="E-mail Sécurisé">Secure Email</label>
+                    <input type="email" id="contact-email" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" placeholder="contact@domain.com">
+                </div>
+            </div>
+            <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Required Service Division" data-jp="希望するサービス部門" data-fr="Division Requise">Required Service Division</label>
+                <select id="contact-division" class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light cursor-pointer">
+                    <option class="bg-darkBg text-white" data-en="Luxury Events & Retail" data-jp="ラグジュアリーイベント・高級小売" data-fr="Événements de Luxe & Retail">Luxury Events & Retail</option>
+                    <option class="bg-darkBg text-white" data-en="Large-Scale Operations" data-jp="大規模オペレーション" data-fr="Opérations à Grande Échelle">Large-Scale Operations</option>
+                    <option class="bg-darkBg text-white" data-en="Technology & Equipment Setup" data-jp="テクノロジー・機材設置" data-fr="Déploiement Tech & Équipements">Technology & Equipment Setup</option>
+                    <option class="bg-darkBg text-white" data-en="Security Audits & Executive Reports" data-jp="セキュリティ監査・エグゼクティブレポート" data-fr="Audits & Rapports de Sécurité">Security Audits, Reports & Compliance</option>
+                    <option class="bg-darkBg text-white" data-en="UHNWI & Executive Close Protection (VIP)" data-jp="UHNWI・エグゼクティブ近接警護 (VIP)" data-fr="Protection Rapprochée UHNWI & CEO">UHNWI & Executive Close Protection (VIP)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Operation Parameters & Scope" data-jp="作戦パラメータと範囲" data-fr="Paramètres & Portée de l'Opération">Operation Parameters & Scope</label>
+                <textarea id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 bg-gold text-darkBg font-medium text-xs tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
+                <span data-en="Transmit Secure Transmission" data-jp="セキュア送信を実行" data-fr="Transmettre la Demande">Transmit Secure Transmission</span>
+            </button>
+        </form>
+
+        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Routing inquiry to jpalmieri@vector-risk-sec.com..." data-jp="信号が保護されました。jpalmieri@vector-risk-sec.com へ転送中..." data-fr="Signal sécurisé. Redirection vers jpalmieri@vector-risk-sec.com...">
+            Signal secured. Routing inquiry to jpalmieri@vector-risk-sec.com...
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 text-center text-[10px] font-mono tracking-widest text-slate-400">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-5 w-auto object-contain opacity-80">
+                <span data-en="Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo." data-jp="株式会社ベクターリスクマネージメント (VRX部門) — 東京・虎ノ門" data-fr="Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.">Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.</span>
+            </div>
+            <div class="flex space-x-8 uppercase">
+                <a href="legal.html" class="hover:text-gold transition-colors" data-en="Legal Notice" data-jp="法的通知" data-fr="Mentions Légales">Legal Notice</a>
+                <a href="privacy.html" class="hover:text-gold transition-colors" data-en="Privacy Policy" data-jp="プライバシーポリシー" data-fr="Confidentialité">Privacy Policy</a>
+                <a href="compliance.html" class="hover:text-gold transition-colors" data-en="Compliance" data-jp="コンプライアンス" data-fr="Conformité">Compliance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function unlockVault() {
+            const vault = document.getElementById('vault-intro');
+            const status = document.getElementById('vault-status');
+            if (status) status.textContent = "ACCESS GRANTED // WELCOME TO VRX";
+            if (status) status.classList.replace('text-slate-400', 'text-gold');
+            
+            setTimeout(() => {
+                vault.classList.add('unlocked');
+            }, 350);
+            setTimeout(() => {
+                vault.style.display = 'none';
+            }, 1800);
+        }
+
+        window.addEventListener('load', function() {
+            const status = document.getElementById('vault-status');
+            setTimeout(() => {
+                if (status) status.textContent = "BIOMETRIC & CLEARANCE VERIFIED";
+            }, 1400);
+            setTimeout(() => {
+                unlockVault();
+            }, 2600);
+        });
+
+        // Gestion de la traduction multilingue (EN, JP, FR) + Placeholders & Titre Hero
+        const langSelect = document.getElementById('lang-select');
+        langSelect.addEventListener('change', function() {
+            const currentLang = this.value;
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else {
+                        el.innerHTML = text;
+                    }
+                }
+            });
+        });
+
+        // Envoi du formulaire vers jpalmieri@vector-risk-sec.com
+        const form = document.getElementById('contact-form');
+        const successBox = document.getElementById('success-message');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const entity = document.getElementById('contact-entity').value;
+            const email = document.getElementById('contact-email').value;
+            const division = document.getElementById('contact-division').value;
+            const scope = document.getElementById('contact-scope').value;
+
+            const recipient = 'jpalmieri@vector-risk-sec.com';
+            const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
+            const body = encodeURIComponent(
+                `Principal / Corporate Entity: ${entity}\n` +
+                `Return Email: ${email}\n` +
+                `Service Division: ${division}\n\n` +
+                `Operation Parameters & Scope:\n${scope}`
+            );
+
+            successBox.classList.remove('hidden');
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            form.reset();
+        });
+    </script>
+</body>
+</html>
