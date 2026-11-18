@@ -43,7 +43,7 @@
             }
         }
     </script>
-    <!-- Polices EN/FR + Polices Japonaises Éditoriales (Noto Serif JP & Noto Sans JP) -->
+    <!-- Polices EN/FR + Polices Japonaises Éditoriales -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
             background-color: #070d19;
             color: #94a3b8;
             overflow-x: hidden;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
         }
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', 'Noto Serif JP', serif;
@@ -88,7 +88,7 @@
         .grid-lines {
             background-image: linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
-            background-size: 80px 80px;
+            background-size: 60px 60px;
         }
         .editorial-border {
             border: 1px solid rgba(197, 160, 89, 0.25);
@@ -96,7 +96,7 @@
 
         /* Retouche photo automatique (Mobile lumineux vs PC dramatique au survol) */
         .vrx-photo {
-            filter: grayscale(40%) contrast(110%) brightness(95%);
+            filter: grayscale(35%) contrast(110%) brightness(95%);
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
         }
         @media (hover: hover) {
@@ -109,7 +109,7 @@
             }
         }
         .vrx-photo-hero {
-            filter: grayscale(35%) contrast(115%) brightness(90%);
+            filter: grayscale(30%) contrast(115%) brightness(92%);
             transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s ease;
         }
         @media (hover: hover) {
@@ -208,8 +208,8 @@
         <div class="vault-door-left"></div>
         <div class="vault-door-right"></div>
         
-        <div class="vault-centerpiece px-6 text-center">
-            <div class="relative w-56 h-56 flex items-center justify-center mb-8">
+        <div class="vault-centerpiece px-4 text-center">
+            <div class="relative w-44 h-44 sm:w-56 sm:h-56 flex items-center justify-center mb-6 sm:mb-8">
                 <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
                     <rect x="20" y="20" width="160" height="160" stroke="#c5a059" stroke-width="1" stroke-opacity="0.6" class="laser-box"/>
                     <polygon points="100,10 190,100 100,190 10,100" stroke="#dfbe7d" stroke-width="1.5" class="laser-diamond"/>
@@ -223,21 +223,21 @@
                     <line x1="180" y1="175" x2="180" y2="185" stroke="#c5a059" stroke-width="2"/>
                 </svg>
 
-                <div class="w-40 h-40 relative overflow-hidden flex items-center justify-center bg-[#070d19]/90 border border-gold/20 shadow-2xl">
+                <div class="w-32 h-32 sm:w-40 sm:h-40 relative overflow-hidden flex items-center justify-center bg-[#070d19]/90 border border-gold/20 shadow-2xl">
                     <div class="laser-scanner"></div>
-                    <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-14 w-auto object-contain relative z-10">
+                    <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-11 sm:h-14 w-auto object-contain relative z-10">
                 </div>
             </div>
 
-            <div class="space-y-3 font-mono">
-                <p class="text-[10px] uppercase tracking-[0.5em] text-gold font-semibold">VECTOR RISK EXCLUSIVE</p>
-                <div class="flex items-center justify-center gap-3">
+            <div class="space-y-2 sm:space-y-3 font-mono">
+                <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.5em] text-gold font-semibold">VECTOR RISK EXCLUSIVE</p>
+                <div class="flex items-center justify-center gap-2.5">
                     <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
-                    <p id="vault-status" class="text-[10px] uppercase tracking-[0.35em] text-slate-400">AUTHENTICATING CLEARANCE...</p>
+                    <p id="vault-status" class="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.35em] text-slate-400">AUTHENTICATING CLEARANCE...</p>
                 </div>
             </div>
 
-            <button onclick="unlockVault()" class="mt-12 text-[9px] font-mono uppercase tracking-[0.3em] text-slate-500 hover:text-gold transition-colors border border-white/10 hover:border-gold/40 px-5 py-2 bg-[#070d19]/80">
+            <button onclick="unlockVault()" class="mt-8 sm:mt-12 text-[9px] font-mono uppercase tracking-[0.25em] text-slate-400 hover:text-gold transition-colors border border-white/10 hover:border-gold/40 px-4 py-2 bg-[#070d19]/80">
                 [ ENTER DIRECTLY ]
             </button>
         </div>
@@ -249,14 +249,14 @@
     </script>
 
     <!-- Header Architectural -->
-    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 sm:h-28 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-4 group">
-                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity">
-                <div class="h-6 w-[1px] bg-white/15"></div>
-                <div class="flex flex-col">
-                    <span class="font-serif tracking-[0.3em] text-sm text-white uppercase font-medium">VRX Exclusive</span>
-                    <span class="text-[7px] tracking-[0.4em] uppercase text-gold font-mono">Vector Risk Management</span>
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-28 flex items-center justify-between gap-2">
+            <a href="#" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
+                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-6 sm:h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity shrink-0">
+                <div class="h-5 sm:h-6 w-[1px] bg-white/15 shrink-0"></div>
+                <div class="flex flex-col truncate">
+                    <span class="font-serif tracking-[0.18em] sm:tracking-[0.3em] text-xs sm:text-sm text-white uppercase font-medium truncate">VRX Exclusive</span>
+                    <span class="text-[6px] sm:text-[7px] tracking-[0.2em] sm:tracking-[0.4em] uppercase text-gold font-mono truncate">Vector Risk Management</span>
                 </div>
             </a>
            
@@ -267,10 +267,10 @@
                 <a href="https://portal.vector-risk-exclusive.com" class="text-gold hover:underline font-mono" data-en="Portal [Secure]" data-jp="ポータル [セキュア]" data-fr="Portail [Sécurisé]">Portal [Secure]</a>
             </nav>
 
-            <div class="flex items-center gap-3 sm:gap-6">
-                <a href="https://portal.vector-risk-exclusive.com" class="lg:hidden text-[10px] font-mono tracking-widest text-gold border border-gold/30 px-2.5 py-1 hover:bg-gold hover:text-darkBg transition-colors" data-en="PORTAL" data-jp="ポータル" data-fr="PORTAIL">PORTAL</a>
+            <div class="flex items-center gap-2 sm:gap-5 shrink-0">
+                <a href="https://portal.vector-risk-exclusive.com" class="lg:hidden text-[9px] font-mono tracking-wider text-gold border border-gold/30 px-2 py-1 hover:bg-gold hover:text-darkBg transition-colors" data-en="PORTAL" data-jp="ポータル" data-fr="PORTAIL">PORTAL</a>
 
-                <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
+                <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[10px] sm:text-[11px] font-mono tracking-widest text-gold py-1 px-1.5 sm:px-2 focus:outline-none focus:border-gold cursor-pointer">
                     <option value="en" class="bg-darkBg text-gold">EN</option>
                     <option value="jp" class="bg-darkBg text-gold">JP</option>
                     <option value="fr" class="bg-darkBg text-gold">FR</option>
@@ -281,45 +281,44 @@
     </header>
 
     <!-- Hero Asymétrique -->
-    <section id="home" class="min-h-screen flex items-center pt-32 pb-16 px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
-            <div class="lg:col-span-7 space-y-8">
-                <div class="inline-flex items-center gap-3 text-[10px] uppercase font-mono tracking-[0.4em] text-gold">
-                    <span class="w-8 h-[1px] bg-gold"></span>
+    <section id="home" class="min-h-0 lg:min-h-screen flex items-center pt-28 pb-12 sm:pt-36 sm:pb-16 px-5 sm:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center w-full">
+            <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+                <div class="inline-flex items-center gap-3 text-[9px] sm:text-[10px] uppercase font-mono tracking-[0.25em] sm:tracking-[0.4em] text-gold">
+                    <span class="w-6 sm:w-8 h-[1px] bg-gold"></span>
                     <span data-en="Toranomon, Minato-ku, Tokyo" data-jp="東京都港区虎ノ門" data-fr="Toranomon, Minato-ku, Tokyo">Toranomon, Minato-ku, Tokyo</span>
                 </div>
                
-                <h1 class="text-5xl sm:text-7xl font-serif text-white font-normal leading-[1.1]"
+                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-serif text-white font-normal leading-[1.2] sm:leading-[1.1]"
                     data-en="The Architecture <br>of <span class='italic font-light text-gold'>Absolute</span> Protection."
                     data-jp="絶対的な保護の<br><span class='font-light text-gold'>アーキテクチャ</span>。"
                     data-fr="L'architecture <br>d'une protection <span class='italic font-light text-gold'>absolue</span>.">
                     The Architecture <br>of <span class="italic font-light text-gold">Absolute</span> Protection.
                 </h1>
                
-                <p class="text-sm sm:text-base text-slate-300 font-light max-w-xl leading-relaxed" 
+                <p class="text-xs sm:text-base text-slate-300 font-light max-w-xl leading-relaxed" 
                    data-en="Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan." 
                    data-jp="UHNWIファミリー、トップファッションハウス、エリートジュエリーメゾンに向けた妥協のないリスク管理、エリート身辺警護、洗練されたセキュリティエンジニアリング。" 
                    data-fr="Gestion des risques sans compromis, protection rapprochée d'élite et ingénierie de sécurité pour les familles UHNWI, grandes maisons de mode et joailleries d'exception au Japon.">
                     Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan.
                 </p>
 
-                <div class="flex items-center gap-8 pt-4">
-                    <a href="#expertise" class="text-xs uppercase tracking-[0.3em] text-white hover:text-gold transition-colors flex items-center gap-3 group font-mono">
+                <div class="flex flex-wrap items-center gap-4 sm:gap-8 pt-2">
+                    <a href="#expertise" class="text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white hover:text-gold transition-colors flex items-center gap-3 group font-mono">
                         <span data-en="Discover Divisions" data-jp="部門を見る" data-fr="Découvrir les divisions">Discover Divisions</span>
                         <i class="fa-solid fa-arrow-right text-gold transform group-hover:translate-x-2 transition-transform"></i>
                     </a>
+                    <a href="#contact" class="sm:hidden px-4 py-2 editorial-border text-gold text-[10px] tracking-[0.2em] uppercase font-mono" data-en="Inquire" data-jp="お問い合わせ" data-fr="Contact">Inquire</a>
                 </div>
             </div>
 
             <!-- Visuel éditorial Toranomon -->
             <div class="lg:col-span-5 relative">
-                <div class="editorial-border p-4 bg-cardBg/80 relative shadow-2xl overflow-hidden">
-                    <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-gold pointer-events-none z-20"></div>
-                    <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-gold pointer-events-none z-20"></div>
+                <div class="editorial-border p-2.5 sm:p-4 bg-cardBg/80 relative shadow-2xl overflow-hidden">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-sector-tokyo.jpg" alt="Tokyo Toranomon Skyline" fetchpriority="high" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
+                        <img src="assets/vrx-sector-tokyo.jpg" alt="Tokyo Toranomon Skyline" fetchpriority="high" class="w-full h-64 sm:h-96 lg:h-[460px] object-cover object-center vrx-photo-hero">
                     </div>
-                    <div class="absolute bottom-8 left-8 bg-darkBg/95 px-4 py-2 border border-gold/30 text-[9px] font-mono tracking-widest text-gold uppercase shadow-lg z-20">
+                    <div class="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 bg-darkBg/95 px-3 py-1.5 sm:px-4 sm:py-2 border border-gold/30 text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest text-gold uppercase shadow-lg z-20">
                         FIG. 01 — MINATO-KU SECTOR, TOKYO
                     </div>
                 </div>
@@ -327,132 +326,132 @@
         </div>
     </section>
 
-    <!-- Operational Metrics Strip -->
-    <section class="px-8 max-w-7xl mx-auto pb-20">
-        <div class="grid grid-cols-2 lg:grid-cols-4 border border-gold/25 bg-cardBg/40 divide-y lg:divide-y-0 lg:divide-x divide-gold/20">
-            <div class="p-6 text-center space-y-1">
-                <span class="block text-xl md:text-2xl font-serif text-white" data-en="Nationwide" data-jp="全国展開対応" data-fr="Couverture Nationale">Nationwide</span>
-                <span class="block text-[9px] font-mono uppercase tracking-[0.25em] text-gold" data-en="Tokyo · Osaka · Nagoya · Fukuoka" data-jp="東京・大阪・名古屋・福岡" data-fr="Tokyo · Osaka · Nagoya · Fukuoka">Tokyo · Osaka · Nagoya · Fukuoka</span>
+    <!-- Operational Metrics Strip (Grille 1px nette sur Mobile et PC) -->
+    <section class="px-5 sm:px-8 max-w-7xl mx-auto pb-14 sm:pb-20">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gold/25 border border-gold/25">
+            <div class="bg-[#091122] p-4 sm:p-6 text-center flex flex-col justify-center space-y-1">
+                <span class="block text-base sm:text-xl md:text-2xl font-serif text-white" data-en="Nationwide" data-jp="全国展開対応" data-fr="National">Nationwide</span>
+                <span class="block text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.12em] sm:tracking-[0.22em] text-gold leading-relaxed" data-en="Tokyo · Osaka · Nagoya · Fukuoka" data-jp="東京・大阪・名古屋・福岡" data-fr="Tokyo · Osaka · Nagoya · Fukuoka">Tokyo · Osaka · Nagoya · Fukuoka</span>
             </div>
-            <div class="p-6 text-center space-y-1">
-                <span class="block text-xl md:text-2xl font-serif text-white" data-en="EN / JP / FR" data-jp="日・英・仏 3ヶ国語対応" data-fr="EN / JP / FR">EN / JP / FR</span>
-                <span class="block text-[9px] font-mono uppercase tracking-[0.25em] text-gold" data-en="Bilingual Tactical Command" data-jp="多言語指揮命令系統" data-fr="Commandement Multilingue">Bilingual Tactical Command</span>
+            <div class="bg-[#091122] p-4 sm:p-6 text-center flex flex-col justify-center space-y-1">
+                <span class="block text-base sm:text-xl md:text-2xl font-serif text-white" data-en="EN / JP / FR" data-jp="日・英・仏対応" data-fr="EN / JP / FR">EN / JP / FR</span>
+                <span class="block text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.12em] sm:tracking-[0.22em] text-gold leading-relaxed" data-en="Trilingual Tactical Command" data-jp="多言語指揮命令系統" data-fr="Commandement Trilingue">Trilingual Tactical Command</span>
             </div>
-            <div class="p-6 text-center space-y-1">
-                <span class="block text-xl md:text-2xl font-serif text-white" data-en="Article 19" data-jp="警備業法第19条準拠" data-fr="Article 19">Article 19</span>
-                <span class="block text-[9px] font-mono uppercase tracking-[0.25em] text-gold" data-en="Full Statutory Compliance" data-jp="東京都公安委員会認定・法定書面交付" data-fr="Conformité Réglementaire Japon">Full Statutory Compliance</span>
+            <div class="bg-[#091122] p-4 sm:p-6 text-center flex flex-col justify-center space-y-1">
+                <span class="block text-base sm:text-xl md:text-2xl font-serif text-white" data-en="Article 19" data-jp="警備業法第19条" data-fr="Article 19">Article 19</span>
+                <span class="block text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.12em] sm:tracking-[0.22em] text-gold leading-relaxed" data-en="Full Statutory Compliance" data-jp="公安委員会認定・法定書面" data-fr="Conformité Réglementaire">Full Statutory Compliance</span>
             </div>
-            <div class="p-6 text-center space-y-1">
-                <span class="block text-xl md:text-2xl font-serif text-white" data-en="24 / 7 / 365" data-jp="24時間365日体制" data-fr="24 / 7 / 365">24 / 7 / 365</span>
-                <span class="block text-[9px] font-mono uppercase tracking-[0.25em] text-gold" data-en="Rapid Deployment & Vault Ops" data-jp="緊急即応・金庫常駐警備" data-fr="Déploiement Rapide & Salle des Coffres">Rapid Deployment & Vault Ops</span>
+            <div class="bg-[#091122] p-4 sm:p-6 text-center flex flex-col justify-center space-y-1">
+                <span class="block text-base sm:text-xl md:text-2xl font-serif text-white" data-en="24 / 7 / 365" data-jp="24時間365日" data-fr="24 / 7 / 365">24 / 7 / 365</span>
+                <span class="block text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.12em] sm:tracking-[0.22em] text-gold leading-relaxed" data-en="Rapid Deployment & Vault Ops" data-jp="緊急即応・金庫常駐警備" data-fr="Déploiement & Salle des Coffres">Rapid Deployment & Vault Ops</span>
             </div>
         </div>
     </section>
 
     <!-- Core Expertise -->
-    <section id="expertise" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-6">
+    <section id="expertise" class="py-16 sm:py-32 px-5 sm:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 sm:mb-24 gap-4 sm:gap-6">
             <div>
-                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block mb-3">01 // Divisions</span>
-                <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Specialized Mandates" data-jp="専門的使命" data-fr="Mandats Spécialisés">Specialized Mandates</h2>
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block mb-2 sm:mb-3">01 // Divisions</span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-serif text-white" data-en="Specialized Mandates" data-jp="専門的使命" data-fr="Mandats Spécialisés">Specialized Mandates</h2>
             </div>
             <p class="text-xs font-light text-slate-300 max-w-sm" data-en="Precision deployments curated for environments where error is non-existent." data-jp="ミスが許されない環境のために厳選された精密配備。" data-fr="Des déploiements de précision conçus pour des environnements où l'erreur n'a pas sa place.">
                 Precision deployments curated for environments where error is non-existent.
             </p>
         </div>
 
-        <div class="space-y-28">
+        <div class="space-y-16 sm:space-y-28">
             
             <!-- Division A : Luxury Events & High-End Retail -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-a-luxury.jpg" alt="Brand Protection Setup" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-a-luxury.jpg" alt="Brand Protection Setup" loading="lazy" decoding="async" class="w-full h-56 sm:h-80 lg:h-[350px] object-cover object-center vrx-photo">
                     </div>
-                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    <span class="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-darkBg/95 px-2.5 py-1 border border-white/10 text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest text-gold uppercase">
                         EXHIBITION HALL & BRAND PROTECTION
                     </span>
                 </div>
-                <div class="lg:col-span-7 space-y-4 lg:pl-12">
-                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division A</span>
-                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Luxury Events & High-End Retail" data-jp="ハイジュエリー・ラグジュアリーリテール警備" data-fr="Haute Joaillerie, Luxe & Retail">Luxury Events & High-End Retail</h3>
-                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Discreet, seamless protection tailored for flagship boutiques, private high-jewelry salons, VIP galas, and exclusive fashion showcases across Japan's premier luxury districts." data-jp="銀座・表参道をはじめとする国内主要ラグジュアリーエリアの旗艦店、ハイジュエリーのプライベート展示会、VIPガラ、ファッションショーに対し、空間の品格を損なわない洗練された警備を提供いたします。" data-fr="Protection discrète et irréprochable dédiée aux boutiques flagships, salons privés de haute joaillerie, galas VIP et défilés au sein des quartiers les plus exclusifs du Japon.">
+                <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:pl-12">
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-gold uppercase">Division A</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif text-white" data-en="Luxury Events & High-End Retail" data-jp="ハイジュエリー・ラグジュアリーリテール警備" data-fr="Haute Joaillerie, Luxe & Retail">Luxury Events & High-End Retail</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Discreet, seamless protection tailored for flagship boutiques, private high-jewelry salons, VIP galas, and exclusive fashion showcases across Japan's premier luxury districts." data-jp="銀座・表参道をはじめとする国内主要ラグジュアリーエリアの旗艦店、ハイジュエリーのプライベート展示会、VIPガラ、ファッションショーに対し、空間の品格を損なわない洗練された警備を提供いたします。" data-fr="Protection discrète et irréprochable dédiée aux boutiques flagships, salons privés de haute joaillerie, galas VIP et défilés au sein des quartiers les plus exclusifs du Japon.">
                         Discreet, seamless protection tailored for flagship boutiques, private high-jewelry salons, VIP galas, and exclusive fashion showcases across Japan's premier luxury districts.
                     </p>
                 </div>
             </div>
 
             <!-- Division B : Large-Scale Operations -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-b-ops.jpg" alt="Large Scale Operations" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-b-ops.jpg" alt="Large Scale Operations" loading="lazy" decoding="async" class="w-full h-56 sm:h-80 lg:h-[350px] object-cover object-center vrx-photo">
                     </div>
-                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    <span class="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-darkBg/95 px-2.5 py-1 border border-white/10 text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest text-gold uppercase">
                         ACCESS & SECTOR CONTROL
                     </span>
                 </div>
-                <div class="lg:col-span-7 lg:order-1 space-y-4 lg:pr-12">
-                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division B</span>
-                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Large-Scale Operations & Perimeter Control" data-jp="大規模イベント警備・動線および出入管理" data-fr="Opérations d'Envergure & Contrôle Périmétrique">Large-Scale Operations & Perimeter Control</h3>
-                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Structured multi-post security architecture, credentialed access control, and real-time tactical command for international exhibitions, corporate summits, and high-profile venues." data-jp="国際展示会、コーポレートサミット、大型商業施設において、多層的なポスト配置、厳格なクレデンシャル（出入）管理、リアルタイムの統合指揮による盤石な警備体制を構築します。" data-fr="Architecture de sécurité multi-postes, contrôle d'accès accrédité et commandement tactique en temps réel pour expositions internationales, sommets et sites à haute affluence.">
+                <div class="lg:col-span-7 lg:order-1 space-y-3 sm:space-y-4 lg:pr-12">
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-gold uppercase">Division B</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif text-white" data-en="Large-Scale Operations & Perimeter Control" data-jp="大規模イベント警備・動線および出入管理" data-fr="Opérations d'Envergure & Contrôle Périmétrique">Large-Scale Operations & Perimeter Control</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Structured multi-post security architecture, credentialed access control, and real-time tactical command for international exhibitions, corporate summits, and high-profile venues." data-jp="国際展示会、コーポレートサミット、大型商業施設において、多層的なポスト配置、厳格なクレデンシャル（出入）管理、リアルタイムの統合指揮による盤石な警備体制を構築します。" data-fr="Architecture de sécurité multi-postes, contrôle d'accès accrédité et commandement tactique en temps réel pour expositions internationales, sommets et sites à haute affluence.">
                         Structured multi-post security architecture, credentialed access control, and real-time tactical command for international exhibitions, corporate summits, and high-profile venues.
                     </p>
                 </div>
             </div>
 
             <!-- Division C : Technology & Equipment Setup -->
-            <div id="technology" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div id="technology" class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-c-tech.jpg" alt="Vaults & CCTV Command Setup" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-right vrx-photo">
+                        <img src="assets/vrx-div-c-tech.jpg" alt="Vaults & CCTV Command Setup" loading="lazy" decoding="async" class="w-full h-56 sm:h-80 lg:h-[350px] object-cover object-right vrx-photo">
                     </div>
-                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    <span class="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-darkBg/95 px-2.5 py-1 border border-white/10 text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest text-gold uppercase">
                         VAULT & CCTV COMMAND RIGGING
                     </span>
                 </div>
-                <div class="lg:col-span-7 space-y-4 lg:pl-12">
-                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division C</span>
-                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Physical Security & Tactical Hardware Engineering" data-jp="物理セキュリティ・高度監視システム構築" data-fr="Ingénierie Physique & Systèmes Électroniques">Physical Security & Tactical Hardware Engineering</h3>
-                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Turnkey deployment of certified high-security vaults, encrypted IP surveillance networks, NVR command stations, and hardened PoE infrastructure for temporary or permanent sites." data-jp="仮設会場から常設拠点まで、防盗金庫の搬入・設置、暗号化IP監視カメラ網、NVR録画指令室、堅牢なPoEネットワーク基盤の設計から構築まで一貫して手がけます。" data-fr="Déploiement clé en main de coffres-forts certifiés haute sécurité, réseaux de vidéoprotection IP chiffrés, postes de contrôle NVR et infrastructures PoE durcies.">
+                <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:pl-12">
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-gold uppercase">Division C</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif text-white" data-en="Physical Security & Tactical Hardware Engineering" data-jp="物理セキュリティ・高度監視システム構築" data-fr="Ingénierie Physique & Systèmes Électroniques">Physical Security & Tactical Hardware Engineering</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Turnkey deployment of certified high-security vaults, encrypted IP surveillance networks, NVR command stations, and hardened PoE infrastructure for temporary or permanent sites." data-jp="仮設会場から常設拠点まで、防盗金庫の搬入・設置、暗号化IP監視カメラ網、NVR録画指令室、堅牢なPoEネットワーク基盤の設計から構築まで一貫して手がけます。" data-fr="Déploiement clé en main de coffres-forts certifiés haute sécurité, réseaux de vidéoprotection IP chiffrés, postes de contrôle NVR et infrastructures PoE durcies.">
                         Turnkey deployment of certified high-security vaults, encrypted IP surveillance networks, NVR command stations, and hardened PoE infrastructure for temporary or permanent sites.
                     </p>
                 </div>
             </div>
 
             <!-- Division D : Security Audits & Executive Reports -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden text-right">
-                        <img src="assets/vrx-div-d-audit.jpg" alt="Security Blueprints and Audits" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-left vrx-photo">
+                        <img src="assets/vrx-div-d-audit.jpg" alt="Security Blueprints and Audits" loading="lazy" decoding="async" class="w-full h-56 sm:h-80 lg:h-[350px] object-cover object-left vrx-photo">
                     </div>
-                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    <span class="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-darkBg/95 px-2.5 py-1 border border-white/10 text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest text-gold uppercase">
                         TVRA BLUEPRINT & ARCHITECTURE
                     </span>
                 </div>
-                <div class="lg:col-span-7 lg:order-1 space-y-4 lg:pr-12">
-                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division D</span>
-                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="Security Audits, TVRA & Statutory Compliance" data-jp="セキュリティ監査・脆弱性評価（TVRA）および法令適合" data-fr="Audits de Sûreté, TVRA & Conformité Légale">Security Audits, TVRA & Statutory Compliance</h3>
-                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Threat and Vulnerability Risk Assessments (TVRA), CAD security blueprints, optical coverage engineering, and full statutory documentation compliant with Article 19 of the Japanese Security Services Act." data-jp="脅威・脆弱性リスク評価（TVRA）、CAD警備配置図面およびカメラ画角設計、さらに警備業法第19条に基づく法定書面の作成まで、厳格なガバナンス基準に適合した監査を実施します。" data-fr="Évaluations des menaces et vulnérabilités (TVRA), plans d'implantation CAD, ingénierie des champs optiques et documentation statutaire conforme à l'article 19 de la loi japonaise.">
+                <div class="lg:col-span-7 lg:order-1 space-y-3 sm:space-y-4 lg:pr-12">
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-gold uppercase">Division D</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif text-white" data-en="Security Audits, TVRA & Statutory Compliance" data-jp="セキュリティ監査・脆弱性評価（TVRA）および法令適合" data-fr="Audits de Sûreté, TVRA & Conformité Légale">Security Audits, TVRA & Statutory Compliance</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Threat and Vulnerability Risk Assessments (TVRA), CAD security blueprints, optical coverage engineering, and full statutory documentation compliant with Article 19 of the Japanese Security Services Act." data-jp="脅威・脆弱性リスク評価（TVRA）、CAD警備配置図面およびカメラ画角設計、さらに警備業法第19条に基づく法定書面の作成まで、厳格なガバナンス基準に適合した監査を実施します。" data-fr="Évaluations des menaces et vulnérabilités (TVRA), plans d'implantation CAD, ingénierie des champs optiques et documentation statutaire conforme à l'article 19 de la loi japonaise.">
                         Threat and Vulnerability Risk Assessments (TVRA), CAD security blueprints, optical coverage engineering, and full statutory documentation compliant with Article 19 of the Japanese Security Services Act.
                     </p>
                 </div>
             </div>
 
             <!-- Division E : UHNWI & Close Protection -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-e-cp.jpg" alt="Executive Close Protection" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-top vrx-photo">
+                        <img src="assets/vrx-div-e-cp.jpg" alt="Executive Close Protection" loading="lazy" decoding="async" class="w-full h-56 sm:h-80 lg:h-[350px] object-cover object-top vrx-photo">
                     </div>
-                    <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
+                    <span class="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-darkBg/95 px-2.5 py-1 border border-white/10 text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest text-gold uppercase">
                         EXECUTIVE CLOSE PROTECTION
                     </span>
                 </div>
-                <div class="lg:col-span-7 space-y-4 lg:pl-12">
-                    <span class="text-[10px] font-mono tracking-widest text-gold uppercase">Division E</span>
-                    <h3 class="text-2xl md:text-3xl font-serif text-white" data-en="UHNWI, Family Offices & Executive Close Protection" data-jp="UHNWI・ファミリーオフィス・エグゼクティブ身辺警護" data-fr="Protection Rapprochée UHNWI, Family Offices & Dirigeants">UHNWI, Family Offices & Executive Close Protection</h3>
-                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Bespoke close protection details, advance route reconnaissance, and secure executive mobility for UHNWI principals, global executives, and visiting dignitaries across Japan." data-jp="超富裕層（UHNWI）、ファミリーオフィス、グローバル企業役員、来日要人に対し、事前の経路偵察、専用車両によるセキュア送迎、高度な身辺警護（4号警備）を日本全国で提供いたします。" data-fr="Dispositifs de protection rapprochée sur mesure, reconnaissance d'itinéraires et mobilité sécurisée pour familles UHNWI, dirigeants internationaux et dignitaires en déplacement au Japon.">
+                <div class="lg:col-span-7 space-y-3 sm:space-y-4 lg:pl-12">
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-gold uppercase">Division E</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif text-white" data-en="UHNWI, Family Offices & Executive Close Protection" data-jp="UHNWI・ファミリーオフィス・エグゼクティブ身辺警護" data-fr="Protection Rapprochée UHNWI, Family Offices & Dirigeants">UHNWI, Family Offices & Executive Close Protection</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Bespoke close protection details, advance route reconnaissance, and secure executive mobility for UHNWI principals, global executives, and visiting dignitaries across Japan." data-jp="超富裕層（UHNWI）、ファミリーオフィス、グローバル企業役員、来日要人に対し、事前の経路偵察、専用車両によるセキュア送迎、高度な身辺警護（4号警備）を日本全国で提供いたします。" data-fr="Dispositifs de protection rapprochée sur mesure, reconnaissance d'itinéraires et mobilité sécurisée pour familles UHNWI, dirigeants internationaux et dignitaires en déplacement au Japon.">
                         Bespoke close protection details, advance route reconnaissance, and secure executive mobility for UHNWI principals, global executives, and visiting dignitaries across Japan.
                     </p>
                 </div>
@@ -462,33 +461,33 @@
     </section>
 
     <!-- Headquarters & Tactical Fleet Section -->
-    <section id="operations" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/10">
-        <div class="editorial-border p-8 lg:p-16 bg-cardBg/60 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-5 space-y-6">
-                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">02 // Institutional Heritage</span>
-                <h2 class="text-3xl md:text-4xl font-serif text-white" data-en="Toranomon Headquarters, Tokyo" data-jp="東京・虎ノ門本社" data-fr="Siège de Toranomon, Tokyo">Toranomon Headquarters, Tokyo</h2>
-                <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed" data-en="Headquartered near the National Police Agency and Ministry of Defense in Toranomon, Minato-ku, Tokyo (tracing its origins back to Spectrum Asia). Backed by decades of combined international security expertise, the VRX division was launched in April 2026 to redefine high-end elite protection." data-jp="港区虎ノ門（警察庁・防衛省近郊）に本社を構え（前身はSpectrum Asia）、長年の国際セキュリティの専門知識に裏打ちされたVRX部門は、2026年4月にハイエンドエリートプロテクションの再定義を目指して設立されました。" data-fr="Basé à Toranomon, Minato-ku, Tokyo (proche de l'Agence Nationale de la Police et du Ministère de la Défense, héritier de Spectrum Asia). Fort de décennies d'expertise, la division VRX a été lancée en avril 2026.">
+    <section id="operations" class="py-16 sm:py-32 px-5 sm:px-8 max-w-7xl mx-auto border-t border-white/10">
+        <div class="editorial-border p-6 sm:p-10 lg:p-16 bg-cardBg/60 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+            <div class="lg:col-span-5 space-y-4 sm:space-y-6">
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block">02 // Institutional Heritage</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif text-white" data-en="Toranomon Headquarters, Tokyo" data-jp="東京・虎ノ門本社" data-fr="Siège de Toranomon, Tokyo">Toranomon Headquarters, Tokyo</h2>
+                <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed" data-en="Headquartered near the National Police Agency and Ministry of Defense in Toranomon, Minato-ku, Tokyo (tracing its origins back to Spectrum Asia). Backed by decades of combined international security expertise, the VRX division was launched in April 2026 to redefine high-end elite protection." data-jp="港区虎ノ門（警察庁・防衛省近郊）に本社を構え（前身はSpectrum Asia）、長年の国際セキュリティの専門知識に裏打ちされたVRX部門は、2026年4月にハイエンドエリートプロテクションの再定義を目指して設立されました。" data-fr="Basé à Toranomon, Minato-ku, Tokyo (proche de l'Agence Nationale de la Police et du Ministère de la Défense, héritier de Spectrum Asia). Fort de décennies d'expertise, la division VRX a été lancée en avril 2026.">
                     Headquartered near the National Police Agency and Ministry of Defense in Toranomon, Minato-ku, Tokyo (tracing its origins back to Spectrum Asia). Backed by decades of combined international security expertise, the VRX division was launched in April 2026 to redefine high-end elite protection.
                 </p>
             </div>
 
             <!-- Photo de mobilité urbaine / VIP Transport -->
-            <div class="lg:col-span-3 overflow-hidden editorial-border h-64 relative">
-                <img src="assets/vrx-mobility.jpg" alt="Tactical Urban Mobility" loading="lazy" decoding="async" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
+            <div class="lg:col-span-3 overflow-hidden editorial-border h-52 sm:h-64 relative">
+                <img src="assets/vrx-mobility.jpg" alt="Tactical Urban Mobility" loading="lazy" decoding="async" class="w-full h-full object-cover object-left-top scale-110 sm:scale-125 vrx-photo">
                 <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
-                <span class="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest text-gold uppercase">
+                <span class="absolute bottom-3 left-3 text-[7px] sm:text-[8px] font-mono tracking-widest text-gold uppercase">
                     URBAN MOBILITY & ESCORT
                 </span>
             </div>
 
-            <div class="lg:col-span-4 space-y-6 lg:border-l lg:border-white/10 lg:pl-10">
-                <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">03 // Digital Infrastructure</span>
-                <h3 class="text-xl font-serif text-white" data-en="VRX Portal Ecosystem" data-jp="VRXポータルエコシステム" data-fr="Écosystème du Portail VRX">VRX Portal Ecosystem</h3>
+            <div class="lg:col-span-4 space-y-4 sm:space-y-6 border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-10">
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block">03 // Digital Infrastructure</span>
+                <h3 class="text-lg sm:text-xl font-serif text-white" data-en="VRX Portal Ecosystem" data-jp="VRXポータルエコシステム" data-fr="Écosystème du Portail VRX">VRX Portal Ecosystem</h3>
                 <p class="text-xs text-slate-300 font-light leading-relaxed" data-en="Our agents, clients, and administrators operate on a centralized cloud portal featuring live incident tracking, contract management, and secure encrypted comms." data-jp="当社のエージェント、クライアント、管理者は、リアルタイムのインシデント追跡、契約管理、セキュアな暗号化通信を備えた集中型クラウドポータルで稼働しています。" data-fr="Nos agents, clients et administrateurs opèrent sur un portail centralisé avec suivi d'incidents en direct, gestion des contrats et communications chiffrées.">
                     Our agents, clients, and administrators operate on a centralized cloud portal featuring live incident tracking, contract management, and secure encrypted comms.
                 </p>
-                <div class="pt-2">
-                    <a href="https://portal.vector-risk-exclusive.com" class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-gold hover:text-white transition-colors font-mono">
+                <div class="pt-1 sm:pt-2">
+                    <a href="https://portal.vector-risk-exclusive.com" class="inline-flex items-center gap-3 text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-gold hover:text-white transition-colors font-mono">
                         <span data-en="Access Portal Dashboard" data-jp="ポータルダッシュボードにアクセス" data-fr="Accéder au Tableau de Bord">Access Portal Dashboard</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -498,28 +497,28 @@
     </section>
 
     <!-- Contact Éditorial -->
-    <section id="contact" class="py-32 px-8 max-w-4xl mx-auto border-t border-white/10">
-        <div class="text-center space-y-6 mb-16">
-            <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">04 // Confidential Protocol</span>
-            <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Initiate a Confidential Consultation" data-jp="機密相談の開始" data-fr="Initier une Consultation Confidentielle">Initiate a Confidential Consultation</h2>
+    <section id="contact" class="py-16 sm:py-32 px-5 sm:px-8 max-w-4xl mx-auto border-t border-white/10">
+        <div class="text-center space-y-4 sm:space-y-6 mb-10 sm:mb-16">
+            <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block">04 // Confidential Protocol</span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-serif text-white" data-en="Initiate a Confidential Consultation" data-jp="機密相談の開始" data-fr="Initier une Consultation Confidentielle">Initiate a Confidential Consultation</h2>
         </div>
 
-        <form id="contact-form" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
+        <form id="contact-form" class="space-y-6 sm:space-y-8 editorial-border p-5 sm:p-10 md:p-16 bg-cardBg/30 shadow-2xl">
             <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                    <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Principal / Corporate Entity" data-jp="プリンシパル／法人名" data-fr="Mandataire / Entité">Principal / Corporate Entity</label>
-                    <input type="text" name="entity" id="contact-entity" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Name or Organization" data-jp="氏名または組織名" data-fr="Nom ou Organisation" placeholder="Name or Organization">
+                    <label class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold mb-2.5 sm:mb-3 font-mono" data-en="Principal / Corporate Entity" data-jp="プリンシパル／法人名" data-fr="Mandataire / Entité">Principal / Corporate Entity</label>
+                    <input type="text" name="entity" id="contact-entity" required class="w-full bg-darkBg border border-white/15 px-3.5 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Name or Organization" data-jp="氏名または組織名" data-fr="Nom ou Organisation" placeholder="Name or Organization">
                 </div>
                 <div>
-                    <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Secure Email" data-jp="セキュアメール" data-fr="E-mail Sécurisé">Secure Email</label>
-                    <input type="email" name="email" id="contact-email" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" placeholder="contact@domain.com">
+                    <label class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold mb-2.5 sm:mb-3 font-mono" data-en="Secure Email" data-jp="セキュアメール" data-fr="E-mail Sécurisé">Secure Email</label>
+                    <input type="email" name="email" id="contact-email" required class="w-full bg-darkBg border border-white/15 px-3.5 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" placeholder="contact@domain.com">
                 </div>
             </div>
             <div>
-                <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Required Service Division" data-jp="希望するサービス部門" data-fr="Division Requise">Required Service Division</label>
-                <select name="division" id="contact-division" class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light cursor-pointer">
+                <label class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold mb-2.5 sm:mb-3 font-mono" data-en="Required Service Division" data-jp="希望するサービス部門" data-fr="Division Requise">Required Service Division</label>
+                <select name="division" id="contact-division" class="w-full bg-darkBg border border-white/15 px-3.5 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light cursor-pointer">
                     <option class="bg-darkBg text-white" data-en="Luxury Events & Retail" data-jp="ハイジュエリー・ラグジュアリーリテール警備" data-fr="Haute Joaillerie, Luxe & Retail">Luxury Events & Retail</option>
                     <option class="bg-darkBg text-white" data-en="Large-Scale Operations" data-jp="大規模イベント警備・動線管理" data-fr="Opérations d'Envergure">Large-Scale Operations</option>
                     <option class="bg-darkBg text-white" data-en="Physical Security & Hardware Engineering" data-jp="物理セキュリティ・高度監視システム構築" data-fr="Ingénierie Physique & Systèmes">Physical Security & Hardware Engineering</option>
@@ -528,27 +527,27 @@
                 </select>
             </div>
             <div>
-                <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Operation Parameters & Scope" data-jp="作戦パラメータと範囲" data-fr="Paramètres & Portée de l'Opération">Operation Parameters & Scope</label>
-                <textarea name="scope" id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
+                <label class="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold mb-2.5 sm:mb-3 font-mono" data-en="Operation Parameters & Scope" data-jp="作戦パラメータと範囲" data-fr="Paramètres & Portée de l'Opération">Operation Parameters & Scope</label>
+                <textarea name="scope" id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-3.5 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
             </div>
-            <button type="submit" id="submit-btn" class="w-full py-4 bg-gold text-darkBg font-medium text-xs tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
+            <button type="submit" id="submit-btn" class="w-full py-3.5 sm:py-4 px-4 bg-gold text-darkBg font-medium text-[10px] sm:text-xs tracking-[0.18em] sm:tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
                 <span data-en="Transmit Secure Transmission" data-jp="セキュア送信を実行" data-fr="Transmettre la Demande">Transmit Secure Transmission</span>
             </button>
         </form>
 
-        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Your inquiry has been encrypted and routed to the VRX Executive Desk." data-jp="送信完了。お問い合わせ内容は暗号化され、VRXエグゼクティブデスクへ送信されました。" data-fr="Signal sécurisé. Votre demande a été transmise au bureau exécutif VRX.">
+        <div id="success-message" class="hidden mt-6 p-5 sm:p-6 editorial-border bg-cardBg text-gold text-[11px] sm:text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Your inquiry has been encrypted and routed to the VRX Executive Desk." data-jp="送信完了。お問い合わせ内容は暗号化され、VRXエグゼクティブデスクへ送信されました。" data-fr="Signal sécurisé. Votre demande a été transmise au bureau exécutif VRX.">
             Signal secured. Your inquiry has been encrypted and routed to the VRX Executive Desk.
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 text-center text-[10px] font-mono tracking-widest text-slate-400">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
+    <footer class="py-10 sm:py-12 border-t border-white/10 text-center text-[9px] sm:text-[10px] font-mono tracking-wider sm:tracking-widest text-slate-400">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
                 <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-5 w-auto object-contain opacity-80">
                 <span data-en="Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo." data-jp="株式会社ベクターリスクマネージメント (VRX部門) — 東京・虎ノ門" data-fr="Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.">Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.</span>
             </div>
-            <div class="flex space-x-8 uppercase">
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8 uppercase">
                 <a href="legal.html" class="hover:text-gold transition-colors" data-en="Legal Notice" data-jp="法的通知" data-fr="Mentions Légales">Legal Notice</a>
                 <a href="privacy.html" class="hover:text-gold transition-colors" data-en="Privacy Policy" data-jp="プライバシーポリシー" data-fr="Confidentialité">Privacy Policy</a>
                 <a href="compliance.html" class="hover:text-gold transition-colors" data-en="Compliance" data-jp="コンプライアンス" data-fr="Conformité">Compliance</a>
