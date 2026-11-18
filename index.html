@@ -243,7 +243,6 @@
         </div>
     </div>
     <script>
-        // Si le visiteur a déjà ouvert le coffre durant sa session, on le masque instantanément
         if (sessionStorage.getItem('vrx_vault_unlocked') === 'true') {
             document.getElementById('vault-intro').style.display = 'none';
         }
@@ -269,7 +268,6 @@
             </nav>
 
             <div class="flex items-center gap-3 sm:gap-6">
-                <!-- Bouton Portail visible sur Mobile/Tablette -->
                 <a href="https://portal.vector-risk-exclusive.com" class="lg:hidden text-[10px] font-mono tracking-widest text-gold border border-gold/30 px-2.5 py-1 hover:bg-gold hover:text-darkBg transition-colors" data-en="PORTAL" data-jp="ポータル" data-fr="PORTAIL">PORTAL</a>
 
                 <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
@@ -499,18 +497,15 @@
         </div>
     </section>
 
-    <!-- Contact Éditorial (Netlify Forms + Fallback mailto) -->
+    <!-- Contact Éditorial -->
     <section id="contact" class="py-32 px-8 max-w-4xl mx-auto border-t border-white/10">
         <div class="text-center space-y-6 mb-16">
             <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">04 // Confidential Protocol</span>
             <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Initiate a Confidential Consultation" data-jp="機密相談の開始" data-fr="Initier une Consultation Confidentielle">Initiate a Confidential Consultation</h2>
         </div>
 
-        <form id="contact-form" name="vrx-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
-            <input type="hidden" name="form-name" value="vrx-inquiry">
-            <p class="hidden">
-                <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-            </p>
+        <form id="contact-form" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
@@ -536,7 +531,7 @@
                 <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Operation Parameters & Scope" data-jp="作戦パラメータと範囲" data-fr="Paramètres & Portée de l'Opération">Operation Parameters & Scope</label>
                 <textarea name="scope" id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
             </div>
-            <button type="submit" class="w-full py-4 bg-gold text-darkBg font-medium text-xs tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
+            <button type="submit" id="submit-btn" class="w-full py-4 bg-gold text-darkBg font-medium text-xs tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
                 <span data-en="Transmit Secure Transmission" data-jp="セキュア送信を実行" data-fr="Transmettre la Demande">Transmit Secure Transmission</span>
             </button>
         </form>
@@ -619,7 +614,7 @@
             applyLanguage(currentLang);
         });
 
-        // Envoi mail Forms + Fallback mailto en cas d'échec réseau
+        // Envoi serveur direct via FormSubmit (Option 1)
         const form = document.getElementById('contact-form');
         const successBox = document.getElementById('success-message');
         form.addEventListener('submit', function(e) {
@@ -630,27 +625,41 @@
             const division = document.getElementById('contact-division').value;
             const scope = document.getElementById('contact-scope').value;
 
-            // Sauvegarde silencieuse dans l'onglet Forms de Netlify
-            fetch('/', {
+            fetch('https://formsubmit.co/ajax/jpalmieri@vector-risk-sec.com', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(form)).toString()
-            }).catch(() => {});
-
-            // Ouverture directe du mail vers ta boîte
-            const recipient = 'jpalmieri@vector-risk-sec.com';
-            const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
-            const body = encodeURIComponent(
-                `Principal / Corporate Entity: ${entity}\n` +
-                `Return Email: ${email}\n` +
-                `Service Division: ${division}\n\n` +
-                `Operation Parameters & Scope:\n${scope}`
-            );
-
-            successBox.classList.remove('hidden');
-            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-            form.reset();
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `[VRX Confidential Inquiry] ${division} — ${entity}`,
+                    _captcha: 'false',
+                    _template: 'table',
+                    Principal_Entity: entity,
+                    Return_Email: email,
+                    Service_Division: division,
+                    Operation_Scope: scope
+                })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network error');
+                successBox.classList.remove('hidden');
+                successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                form.reset();
+            })
+            .catch(() => {
+                const recipient = 'jpalmieri@vector-risk-sec.com';
+                const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
+                const body = encodeURIComponent(
+                    `Principal / Corporate Entity: ${entity}\n` +
+                    `Return Email: ${email}\n` +
+                    `Service Division: ${division}\n\n` +
+                    `Operation Parameters & Scope:\n${scope}`
+                );
+                successBox.classList.remove('hidden');
+                window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+                form.reset();
+            });
         });
     </script>
 </body>
