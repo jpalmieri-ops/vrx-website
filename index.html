@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://vector-risk-exclusive.com/">
     <link rel="icon" type="image/png" href="assets/icon.png">
 
-    <!-- Open Graph -->
+    <!-- Open Graph (Aperçu LinkedIn, LINE, WhatsApp) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Vector Risk Exclusive">
     <meta property="og:title" content="VRX | Vector Risk Exclusive — Toranomon, Tokyo">
@@ -35,26 +35,29 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                        serif: ['Playfair Display', 'Noto Serif JP', 'serif'],
                         mono: ['Courier New', 'monospace']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Polices EN/FR + Polices Japonaises Éditoriales (Noto Serif JP & Noto Sans JP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
             background-color: #070d19;
             color: #94a3b8;
             overflow-x: hidden;
             letter-spacing: 0.05em;
         }
         h1, h2, h3, .font-serif {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', 'Noto Serif JP', serif;
             letter-spacing: 0.02em;
         }
         html {
@@ -91,22 +94,29 @@
             border: 1px solid rgba(197, 160, 89, 0.25);
         }
 
-        /* Retouche photo automatique */
+        /* Retouche photo automatique (Mobile lumineux vs PC dramatique au survol) */
         .vrx-photo {
-            filter: grayscale(85%) contrast(115%) brightness(90%);
+            filter: grayscale(40%) contrast(110%) brightness(95%);
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
         }
-        .vrx-photo:hover {
-            transform: scale(1.04);
-            filter: grayscale(15%) contrast(110%) brightness(100%);
+        @media (hover: hover) {
+            .vrx-photo {
+                filter: grayscale(85%) contrast(115%) brightness(90%);
+            }
+            .vrx-photo:hover {
+                transform: scale(1.04);
+                filter: grayscale(15%) contrast(110%) brightness(100%);
+            }
         }
         .vrx-photo-hero {
-            filter: grayscale(40%) contrast(115%) brightness(85%);
+            filter: grayscale(35%) contrast(115%) brightness(90%);
             transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s ease;
         }
-        .vrx-photo-hero:hover {
-            transform: scale(1.02);
-            filter: grayscale(0%) contrast(110%) brightness(95%);
+        @media (hover: hover) {
+            .vrx-photo-hero:hover {
+                transform: scale(1.02);
+                filter: grayscale(0%) contrast(110%) brightness(95%);
+            }
         }
 
         /* Intro Coffre Architectural VRX */
@@ -232,10 +242,16 @@
             </button>
         </div>
     </div>
+    <script>
+        // Si le visiteur a déjà ouvert le coffre durant sa session, on le masque instantanément
+        if (sessionStorage.getItem('vrx_vault_unlocked') === 'true') {
+            document.getElementById('vault-intro').style.display = 'none';
+        }
+    </script>
 
     <!-- Header Architectural -->
     <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 h-28 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 sm:h-28 flex items-center justify-between">
             <a href="#" class="flex items-center gap-4 group">
                 <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity">
                 <div class="h-6 w-[1px] bg-white/15"></div>
@@ -252,8 +268,11 @@
                 <a href="https://portal.vector-risk-exclusive.com" class="text-gold hover:underline font-mono" data-en="Portal [Secure]" data-jp="ポータル [セキュア]" data-fr="Portail [Sécurisé]">Portal [Secure]</a>
             </nav>
 
-            <div class="flex items-center gap-6">
-                <select id="lang-select" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
+            <div class="flex items-center gap-3 sm:gap-6">
+                <!-- Bouton Portail visible sur Mobile/Tablette -->
+                <a href="https://portal.vector-risk-exclusive.com" class="lg:hidden text-[10px] font-mono tracking-widest text-gold border border-gold/30 px-2.5 py-1 hover:bg-gold hover:text-darkBg transition-colors" data-en="PORTAL" data-jp="ポータル" data-fr="PORTAIL">PORTAL</a>
+
+                <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
                     <option value="en" class="bg-darkBg text-gold">EN</option>
                     <option value="jp" class="bg-darkBg text-gold">JP</option>
                     <option value="fr" class="bg-darkBg text-gold">FR</option>
@@ -274,14 +293,14 @@
                
                 <h1 class="text-5xl sm:text-7xl font-serif text-white font-normal leading-[1.1]"
                     data-en="The Architecture <br>of <span class='italic font-light text-gold'>Absolute</span> Protection."
-                    data-jp="絶対的な保護の<br><span class='italic font-light text-gold'>アーキテクチャ</span>。"
+                    data-jp="絶対的な保護の<br><span class='font-light text-gold'>アーキテクチャ</span>。"
                     data-fr="L'architecture <br>d'une protection <span class='italic font-light text-gold'>absolue</span>.">
                     The Architecture <br>of <span class="italic font-light text-gold">Absolute</span> Protection.
                 </h1>
                
                 <p class="text-sm sm:text-base text-slate-300 font-light max-w-xl leading-relaxed" 
                    data-en="Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan." 
-                   data-jp="UHNWIファミリー、トップファッションハウス、エリートジュエリーメゾンに向けた妥協のないリスク管理、エリート近接警護、洗練されたセキュリティエンジニアリング。" 
+                   data-jp="UHNWIファミリー、トップファッションハウス、エリートジュエリーメゾンに向けた妥協のないリスク管理、エリート身辺警護、洗練されたセキュリティエンジニアリング。" 
                    data-fr="Gestion des risques sans compromis, protection rapprochée d'élite et ingénierie de sécurité pour les familles UHNWI, grandes maisons de mode et joailleries d'exception au Japon.">
                     Uncompromising risk management, elite close protection, and sophisticated security engineering for UHNWI families, premier fashion houses, and elite jewelry Maisons across Japan.
                 </p>
@@ -300,7 +319,7 @@
                     <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-gold pointer-events-none z-20"></div>
                     <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-gold pointer-events-none z-20"></div>
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-sector-tokyo.jpg" alt="Tokyo Toranomon Skyline" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
+                        <img src="assets/vrx-sector-tokyo.jpg" alt="Tokyo Toranomon Skyline" fetchpriority="high" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
                     </div>
                     <div class="absolute bottom-8 left-8 bg-darkBg/95 px-4 py-2 border border-gold/30 text-[9px] font-mono tracking-widest text-gold uppercase shadow-lg z-20">
                         FIG. 01 — MINATO-KU SECTOR, TOKYO
@@ -350,7 +369,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-a-luxury.jpg" alt="Brand Protection Setup" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-a-luxury.jpg" alt="Brand Protection Setup" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-center vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         EXHIBITION HALL & BRAND PROTECTION
@@ -369,7 +388,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-b-ops.jpg" alt="Large Scale Operations" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-b-ops.jpg" alt="Large Scale Operations" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-center vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         ACCESS & SECTOR CONTROL
@@ -388,7 +407,7 @@
             <div id="technology" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-c-tech.jpg" alt="Vaults & CCTV Command Setup" class="w-full h-[350px] object-cover object-right vrx-photo">
+                        <img src="assets/vrx-div-c-tech.jpg" alt="Vaults & CCTV Command Setup" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-right vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         VAULT & CCTV COMMAND RIGGING
@@ -407,7 +426,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden text-right">
-                        <img src="assets/vrx-div-d-audit.jpg" alt="Security Blueprints and Audits" class="w-full h-[350px] object-cover object-left vrx-photo">
+                        <img src="assets/vrx-div-d-audit.jpg" alt="Security Blueprints and Audits" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-left vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         TVRA BLUEPRINT & ARCHITECTURE
@@ -426,7 +445,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="assets/vrx-div-e-cp.jpg" alt="Executive Close Protection" class="w-full h-[350px] object-cover object-top vrx-photo">
+                        <img src="assets/vrx-div-e-cp.jpg" alt="Executive Close Protection" loading="lazy" decoding="async" class="w-full h-[350px] object-cover object-top vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         EXECUTIVE CLOSE PROTECTION
@@ -457,7 +476,7 @@
 
             <!-- Photo de mobilité urbaine / VIP Transport -->
             <div class="lg:col-span-3 overflow-hidden editorial-border h-64 relative">
-                <img src="assets/vrx-mobility.jpg" alt="Tactical Urban Mobility" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
+                <img src="assets/vrx-mobility.jpg" alt="Tactical Urban Mobility" loading="lazy" decoding="async" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
                 <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
                 <span class="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest text-gold uppercase">
                     URBAN MOBILITY & ESCORT
@@ -480,27 +499,32 @@
         </div>
     </section>
 
-    <!-- Contact Éditorial -->
+    <!-- Contact Éditorial (Netlify Forms + Fallback mailto) -->
     <section id="contact" class="py-32 px-8 max-w-4xl mx-auto border-t border-white/10">
         <div class="text-center space-y-6 mb-16">
             <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block">04 // Confidential Protocol</span>
             <h2 class="text-3xl md:text-5xl font-serif text-white" data-en="Initiate a Confidential Consultation" data-jp="機密相談の開始" data-fr="Initier une Consultation Confidentielle">Initiate a Confidential Consultation</h2>
         </div>
 
-        <form id="contact-form" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
+        <form id="contact-form" name="vrx-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-8 editorial-border p-8 md:p-16 bg-cardBg/30 shadow-2xl">
+            <input type="hidden" name="form-name" value="vrx-inquiry">
+            <p class="hidden">
+                <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+            </p>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Principal / Corporate Entity" data-jp="プリンシパル／法人名" data-fr="Mandataire / Entité">Principal / Corporate Entity</label>
-                    <input type="text" id="contact-entity" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Name or Organization" data-jp="氏名または組織名" data-fr="Nom ou Organisation" placeholder="Name or Organization">
+                    <input type="text" name="entity" id="contact-entity" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Name or Organization" data-jp="氏名または組織名" data-fr="Nom ou Organisation" placeholder="Name or Organization">
                 </div>
                 <div>
                     <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Secure Email" data-jp="セキュアメール" data-fr="E-mail Sécurisé">Secure Email</label>
-                    <input type="email" id="contact-email" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" placeholder="contact@domain.com">
+                    <input type="email" name="email" id="contact-email" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" placeholder="contact@domain.com">
                 </div>
             </div>
             <div>
                 <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Required Service Division" data-jp="希望するサービス部門" data-fr="Division Requise">Required Service Division</label>
-                <select id="contact-division" class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light cursor-pointer">
+                <select name="division" id="contact-division" class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light cursor-pointer">
                     <option class="bg-darkBg text-white" data-en="Luxury Events & Retail" data-jp="ハイジュエリー・ラグジュアリーリテール警備" data-fr="Haute Joaillerie, Luxe & Retail">Luxury Events & Retail</option>
                     <option class="bg-darkBg text-white" data-en="Large-Scale Operations" data-jp="大規模イベント警備・動線管理" data-fr="Opérations d'Envergure">Large-Scale Operations</option>
                     <option class="bg-darkBg text-white" data-en="Physical Security & Hardware Engineering" data-jp="物理セキュリティ・高度監視システム構築" data-fr="Ingénierie Physique & Systèmes">Physical Security & Hardware Engineering</option>
@@ -510,15 +534,15 @@
             </div>
             <div>
                 <label class="block text-[10px] uppercase tracking-[0.2em] text-gold mb-3 font-mono" data-en="Operation Parameters & Scope" data-jp="作戦パラメータと範囲" data-fr="Paramètres & Portée de l'Opération">Operation Parameters & Scope</label>
-                <textarea id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
+                <textarea name="scope" id="contact-scope" rows="4" required class="w-full bg-darkBg border border-white/15 px-4 py-3 text-white text-xs focus:outline-none focus:border-gold transition-colors font-light" data-en="Specify venues, timelines, and specialized requirements..." data-jp="会場、タイムライン、特別な要件を指定してください..." data-fr="Précisez les lieux, délais et exigences particulières..." placeholder="Specify venues, timelines, and specialized requirements..."></textarea>
             </div>
             <button type="submit" class="w-full py-4 bg-gold text-darkBg font-medium text-xs tracking-[0.3em] uppercase hover:bg-gold-light transition-all duration-500 font-mono shadow-xl">
                 <span data-en="Transmit Secure Transmission" data-jp="セキュア送信を実行" data-fr="Transmettre la Demande">Transmit Secure Transmission</span>
             </button>
         </form>
 
-        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Routing inquiry to VRX Executive Desk..." data-jp="信号が保護されました。VRXエグゼクティブデスクへ転送中..." data-fr="Signal sécurisé. Redirection vers le bureau exécutif VRX...">
-            Signal secured. Routing inquiry to VRX Executive Desk...
+        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Your inquiry has been encrypted and routed to the VRX Executive Desk." data-jp="送信完了。お問い合わせ内容は暗号化され、VRXエグゼクティブデスクへ送信されました。" data-fr="Signal sécurisé. Votre demande a été transmise au bureau exécutif VRX.">
+            Signal secured. Your inquiry has been encrypted and routed to the VRX Executive Desk.
         </div>
     </section>
 
@@ -542,6 +566,9 @@
         function unlockVault() {
             const vault = document.getElementById('vault-intro');
             const status = document.getElementById('vault-status');
+            sessionStorage.setItem('vrx_vault_unlocked', 'true');
+            if (!vault || vault.style.display === 'none') return;
+
             if (status) status.textContent = "ACCESS GRANTED // WELCOME TO VRX";
             if (status) status.classList.replace('text-slate-400', 'text-gold');
             
@@ -554,6 +581,7 @@
         }
 
         window.addEventListener('load', function() {
+            if (sessionStorage.getItem('vrx_vault_unlocked') === 'true') return;
             const status = document.getElementById('vault-status');
             setTimeout(() => {
                 if (status) status.textContent = "BIOMETRIC & CLEARANCE VERIFIED";
@@ -563,11 +591,12 @@
             }, 1500);
         });
 
+        // Changement et mémorisation de la langue (EN / JP / FR)
         const langSelect = document.getElementById('lang-select');
-        langSelect.addEventListener('change', function() {
-            const currentLang = this.value;
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang === 'jp' ? 'ja' : lang;
             document.querySelectorAll('[data-en]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
+                const text = el.getAttribute(`data-${lang}`);
                 if (text) {
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                         el.placeholder = text;
@@ -576,8 +605,21 @@
                     }
                 }
             });
+        }
+
+        const savedLang = localStorage.getItem('vrx_lang');
+        if (savedLang && ['en', 'jp', 'fr'].includes(savedLang)) {
+            langSelect.value = savedLang;
+            applyLanguage(savedLang);
+        }
+
+        langSelect.addEventListener('change', function() {
+            const currentLang = this.value;
+            localStorage.setItem('vrx_lang', currentLang);
+            applyLanguage(currentLang);
         });
 
+        // Envoi serveur Netlify Forms + Fallback mailto en cas d'échec réseau
         const form = document.getElementById('contact-form');
         const successBox = document.getElementById('success-message');
         form.addEventListener('submit', function(e) {
@@ -588,20 +630,33 @@
             const division = document.getElementById('contact-division').value;
             const scope = document.getElementById('contact-scope').value;
 
-            const recipient = 'jpalmieri@vector-risk-sec.com';
-            const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
-            const body = encodeURIComponent(
-                `Principal / Corporate Entity: ${entity}\n` +
-                `Return Email: ${email}\n` +
-                `Service Division: ${division}\n\n` +
-                `Operation Parameters & Scope:\n${scope}`
-            );
+            const formData = new FormData(form);
 
-            successBox.classList.remove('hidden');
-            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-            form.reset();
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                successBox.classList.remove('hidden');
+                successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                form.reset();
+            })
+            .catch(() => {
+                // Secours automatique via client mail si hors-ligne
+                const recipient = 'jpalmieri@vector-risk-sec.com';
+                const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
+                const body = encodeURIComponent(
+                    `Principal / Corporate Entity: ${entity}\n` +
+                    `Return Email: ${email}\n` +
+                    `Service Division: ${division}\n\n` +
+                    `Operation Parameters & Scope:\n${scope}`
+                );
+                successBox.classList.remove('hidden');
+                window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+                form.reset();
+            });
         });
     </script>
 </body>
