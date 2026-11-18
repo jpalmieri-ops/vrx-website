@@ -619,7 +619,7 @@
             applyLanguage(currentLang);
         });
 
-        // Envoi serveur Netlify Forms + Fallback mailto en cas d'échec réseau
+        // Envoi mail Forms + Fallback mailto en cas d'échec réseau
         const form = document.getElementById('contact-form');
         const successBox = document.getElementById('success-message');
         form.addEventListener('submit', function(e) {
@@ -630,33 +630,27 @@
             const division = document.getElementById('contact-division').value;
             const scope = document.getElementById('contact-scope').value;
 
-            const formData = new FormData(form);
-
+            // Sauvegarde silencieuse dans l'onglet Forms de Netlify
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                successBox.classList.remove('hidden');
-                successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                form.reset();
-            })
-            .catch(() => {
-                // Secours automatique via client mail si hors-ligne
-                const recipient = 'jpalmieri@vector-risk-sec.com';
-                const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
-                const body = encodeURIComponent(
-                    `Principal / Corporate Entity: ${entity}\n` +
-                    `Return Email: ${email}\n` +
-                    `Service Division: ${division}\n\n` +
-                    `Operation Parameters & Scope:\n${scope}`
-                );
-                successBox.classList.remove('hidden');
-                window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-                form.reset();
-            });
+                body: new URLSearchParams(new FormData(form)).toString()
+            }).catch(() => {});
+
+            // Ouverture directe du mail vers ta boîte
+            const recipient = 'jpalmieri@vector-risk-sec.com';
+            const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
+            const body = encodeURIComponent(
+                `Principal / Corporate Entity: ${entity}\n` +
+                `Return Email: ${email}\n` +
+                `Service Division: ${division}\n\n` +
+                `Operation Parameters & Scope:\n${scope}`
+            );
+
+            successBox.classList.remove('hidden');
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            form.reset();
         });
     </script>
 </body>
