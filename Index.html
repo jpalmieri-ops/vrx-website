@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>VRX | Vector Risk Exclusive — Toranomon, Tokyo</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,8 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#070d19', /* Compromis parfait : Bleu Saphir Abyssal */
-                        cardBg: '#0d172a', /* Bleu Nuit profond pour les encarts */
+                        darkBg: '#070d19',
+                        cardBg: '#0d172a',
                         gold: {
                             DEFAULT: '#c5a059',
                             light: '#dfbe7d',
@@ -23,7 +24,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                        mono: ['Courier New', monospace]
+                        mono: ['Courier New', 'monospace']
                     }
                 }
             }
@@ -46,12 +47,10 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Correction visibilité des options de menu déroulant sur Windows/Chrome */
         select option {
             background-color: #070d19;
             color: #ffffff;
         }
-/* Verrouillage du thème sombre sur tous les champs du formulaire (y compris autofill) */
         input, select, textarea {
             background-color: #070d19 !important;
             color: #ffffff !important;
@@ -118,7 +117,7 @@
             width: 50%;
             background-color: #050912;
             z-index: 10;
-            transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
         .vault-door-left {
             left: 0;
@@ -143,7 +142,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         #vault-intro.unlocked .vault-centerpiece {
             opacity: 0;
@@ -152,12 +151,12 @@
         .laser-box {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: drawLaser 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: drawLaser 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .laser-diamond {
             stroke-dasharray: 600;
             stroke-dashoffset: 600;
-            animation: drawLaser 2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            animation: drawLaser 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         }
         @keyframes drawLaser {
             to { stroke-dashoffset: 0; }
@@ -175,7 +174,7 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, #c5a059, transparent);
             box-shadow: 0 0 15px #c5a059;
-            animation: scanLine 2s ease-in-out infinite;
+            animation: scanLine 1.5s ease-in-out infinite;
         }
     </style>
 </head>
@@ -203,7 +202,7 @@
 
                 <div class="w-40 h-40 relative overflow-hidden flex items-center justify-center bg-[#070d19]/90 border border-gold/20 shadow-2xl">
                     <div class="laser-scanner"></div>
-                    <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-14 w-auto object-contain relative z-10">
+                    <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-14 w-auto object-contain relative z-10">
                 </div>
             </div>
 
@@ -225,7 +224,7 @@
     <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-8 h-28 flex items-center justify-between">
             <a href="#" class="flex items-center gap-4 group">
-                <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity">
+                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-8 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity">
                 <div class="h-6 w-[1px] bg-white/15"></div>
                 <div class="flex flex-col">
                     <span class="font-serif tracking-[0.3em] text-sm text-white uppercase font-medium">VRX Exclusive</span>
@@ -237,7 +236,7 @@
                 <a href="#expertise" class="hover:text-gold transition-colors" data-en="Expertise" data-jp="専門分野" data-fr="Expertise">Expertise</a>
                 <a href="#technology" class="hover:text-gold transition-colors" data-en="Engineering" data-jp="エンジニアリング" data-fr="Ingénierie">Engineering</a>
                 <a href="#operations" class="hover:text-gold transition-colors" data-en="Headquarters" data-jp="拠点" data-fr="Siège">Headquarters</a>
-                <a href="https://vrx-portal.netlify.app/index.html" class="text-gold hover:underline font-mono" data-en="Portal [Secure]" data-jp="ポータル [セキュア]" data-fr="Portail [Sécurisé]">Portal [Secure]</a>
+                <a href="portal.html" class="text-gold hover:underline font-mono" data-en="Portal [Secure]" data-jp="ポータル [セキュア]" data-fr="Portail [Sécurisé]">Portal [Secure]</a>
             </nav>
 
             <div class="flex items-center gap-6">
@@ -260,7 +259,6 @@
                     <span data-en="Toranomon, Minato-ku, Tokyo" data-jp="東京都港区虎ノ門" data-fr="Toranomon, Minato-ku, Tokyo">Toranomon, Minato-ku, Tokyo</span>
                 </div>
                
-                <!-- Titre Principal avec Traduction dynamique -->
                 <h1 class="text-5xl sm:text-7xl font-serif text-white font-normal leading-[1.1]"
                     data-en="The Architecture <br>of <span class='italic font-light text-gold'>Absolute</span> Protection."
                     data-jp="絶対的な保護の<br><span class='italic font-light text-gold'>アーキテクチャ</span>。"
@@ -283,13 +281,13 @@
                 </div>
             </div>
 
-            <!-- Visuel éditorial Azabudai Hills -->
+            <!-- Visuel éditorial Toranomon -->
             <div class="lg:col-span-5 relative">
                 <div class="editorial-border p-4 bg-cardBg/80 relative shadow-2xl overflow-hidden">
                     <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-gold pointer-events-none z-20"></div>
                     <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-gold pointer-events-none z-20"></div>
                     <div class="overflow-hidden">
-                        <img src="PXL_20251008_082539615.MP.jpg" alt="Tokyo Toranomon Skyline" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
+                        <img src="assets/vrx-sector-tokyo.jpg" alt="Tokyo Toranomon Skyline" class="w-full h-[460px] object-cover object-center vrx-photo-hero">
                     </div>
                     <div class="absolute bottom-8 left-8 bg-darkBg/95 px-4 py-2 border border-gold/30 text-[9px] font-mono tracking-widest text-gold uppercase shadow-lg z-20">
                         FIG. 01 — MINATO-KU SECTOR, TOKYO
@@ -317,7 +315,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="Clement.jpg" alt="Brand Protection Setup" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-a-luxury.jpg" alt="Brand Protection Setup" class="w-full h-[350px] object-cover object-center vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         EXHIBITION HALL & BRAND PROTECTION
@@ -336,7 +334,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="PXL_20260423_112326523.MP.jpg" alt="Large Scale Operations" class="w-full h-[350px] object-cover object-center vrx-photo">
+                        <img src="assets/vrx-div-b-ops.jpg" alt="Large Scale Operations" class="w-full h-[350px] object-cover object-center vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         ACCESS & SECTOR CONTROL
@@ -355,7 +353,7 @@
             <div id="technology" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="PXL_20250528_122741044.MP.jpg" alt="Vaults & CCTV Command Setup" class="w-full h-[350px] object-cover object-right vrx-photo">
+                        <img src="assets/vrx-div-c-tech.jpg" alt="Vaults & CCTV Command Setup" class="w-full h-[350px] object-cover object-right vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         VAULT & CCTV COMMAND RIGGING
@@ -374,7 +372,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 lg:order-2 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden text-right">
-                        <img src="PXL_20250827_202542918.jpg" alt="Security Blueprints and Audits" class="w-full h-[350px] object-cover object-left vrx-photo">
+                        <img src="assets/vrx-div-d-audit.jpg" alt="Security Blueprints and Audits" class="w-full h-[350px] object-cover object-left vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         TVRA BLUEPRINT & ARCHITECTURE
@@ -393,7 +391,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 overflow-hidden editorial-border bg-cardBg p-2 shadow-2xl relative">
                     <div class="overflow-hidden">
-                        <img src="PXL_20250608_110555505.jpg" alt="Executive Close Protection" class="w-full h-[350px] object-cover object-top vrx-photo">
+                        <img src="assets/vrx-div-e-cp.jpg" alt="Executive Close Protection" class="w-full h-[350px] object-cover object-top vrx-photo">
                     </div>
                     <span class="absolute bottom-5 left-5 bg-darkBg/90 px-3 py-1 border border-white/10 text-[8px] font-mono tracking-widest text-gold uppercase">
                         EXECUTIVE CLOSE PROTECTION
@@ -424,7 +422,7 @@
 
             <!-- Photo de mobilité urbaine / VIP Transport -->
             <div class="lg:col-span-3 overflow-hidden editorial-border h-64 relative">
-                <img src="IMG-20241029-WA0017.jpg" alt="Tactical Urban Mobility" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
+                <img src="assets/vrx-mobility.jpg" alt="Tactical Urban Mobility" class="w-full h-full object-cover object-left-top scale-125 vrx-photo">
                 <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
                 <span class="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest text-gold uppercase">
                     URBAN MOBILITY & ESCORT
@@ -438,7 +436,7 @@
                     Our agents, clients, and administrators operate on a centralized cloud portal featuring live incident tracking, contract management, and secure encrypted comms.
                 </p>
                 <div class="pt-2">
-                    <a href="https://vrx-portal.netlify.app/index.html" class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-gold hover:text-white transition-colors font-mono">
+                    <a href="portal.html" class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-gold hover:text-white transition-colors font-mono">
                         <span data-en="Access Portal Dashboard" data-jp="ポータルダッシュボードにアクセス" data-fr="Accéder au Tableau de Bord">Access Portal Dashboard</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -484,8 +482,8 @@
             </button>
         </form>
 
-        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Routing inquiry to jpalmieri@vector-risk-sec.com..." data-jp="信号が保護されました。jpalmieri@vector-risk-sec.com へ転送中..." data-fr="Signal sécurisé. Redirection vers jpalmieri@vector-risk-sec.com...">
-            Signal secured. Routing inquiry to jpalmieri@vector-risk-sec.com...
+        <div id="success-message" class="hidden mt-6 p-6 editorial-border bg-cardBg text-gold text-xs tracking-wider uppercase text-center font-mono" data-en="Signal secured. Routing inquiry to VRX Executive Desk..." data-jp="信号が保護されました。VRXエグゼクティブデスクへ転送中..." data-fr="Signal sécurisé. Redirection vers le bureau exécutif VRX...">
+            Signal secured. Routing inquiry to VRX Executive Desk...
         </div>
     </section>
 
@@ -493,7 +491,7 @@
     <footer class="py-12 border-t border-white/10 text-center text-[10px] font-mono tracking-widest text-slate-400">
         <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/d/1Cnvnuxw_cV_a_3UuzkPF4zF4zz3t-Ymf" alt="VRX Logo" class="h-5 w-auto object-contain opacity-80">
+                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-5 w-auto object-contain opacity-80">
                 <span data-en="Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo." data-jp="株式会社ベクターリスクマネージメント (VRX部門) — 東京・虎ノ門" data-fr="Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.">Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.</span>
             </div>
             <div class="flex space-x-8 uppercase">
@@ -514,23 +512,22 @@
             
             setTimeout(() => {
                 vault.classList.add('unlocked');
-            }, 350);
+            }, 250);
             setTimeout(() => {
                 vault.style.display = 'none';
-            }, 1800);
+            }, 1500);
         }
 
         window.addEventListener('load', function() {
             const status = document.getElementById('vault-status');
             setTimeout(() => {
                 if (status) status.textContent = "BIOMETRIC & CLEARANCE VERIFIED";
-            }, 1400);
+            }, 800);
             setTimeout(() => {
                 unlockVault();
-            }, 2600);
+            }, 1500);
         });
 
-        // Gestion de la traduction multilingue (EN, JP, FR) + Placeholders & Titre Hero
         const langSelect = document.getElementById('lang-select');
         langSelect.addEventListener('change', function() {
             const currentLang = this.value;
@@ -546,7 +543,7 @@
             });
         });
 
-        // Envoi du formulaire vers jpalmieri@vector-risk-sec.com
+        // Routage vers l'alias générique (configurer une redirection serveur vers ta boîte personnelle)
         const form = document.getElementById('contact-form');
         const successBox = document.getElementById('success-message');
         form.addEventListener('submit', function(e) {
@@ -557,7 +554,7 @@
             const division = document.getElementById('contact-division').value;
             const scope = document.getElementById('contact-scope').value;
 
-            const recipient = 'jpalmieri@vector-risk-sec.com';
+            const recipient = 'desk@vector-risk-exclusive.com';
             const subject = encodeURIComponent(`[VRX Confidential Inquiry] ${division} — ${entity}`);
             const body = encodeURIComponent(
                 `Principal / Corporate Entity: ${entity}\n` +
