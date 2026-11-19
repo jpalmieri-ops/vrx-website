@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <link rel="icon" type="image/png" href="assets/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Compliance & Standards | VRX — Vector Risk Exclusive</title>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vector-risk-exclusive.com/compliance.html">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,22 +21,24 @@
                         gold: { DEFAULT: '#c5a059', light: '#dfbe7d', dark: '#9e7b39' }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                        serif: ['Playfair Display', 'Noto Serif JP', 'serif'],
                         mono: ['Courier New', 'monospace']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #070d19; color: #94a3b8; letter-spacing: 0.04em; }
-        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background-color: #070d19; color: #94a3b8; letter-spacing: 0.04em; overflow-x: hidden; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', 'Noto Serif JP', serif; }
         .grid-lines {
             background-image: linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
-            background-size: 80px 80px;
+            background-size: 60px 60px;
         }
         .editorial-border { border: 1px solid rgba(197, 160, 89, 0.25); }
         select option { background-color: #070d19; color: #c5a059; }
@@ -42,40 +47,40 @@
 <body class="bg-darkBg text-slate-300 antialiased selection:bg-gold selection:text-darkBg grid-lines min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-4 group">
-                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-8 w-auto object-contain">
-                <div class="h-6 w-[1px] bg-white/15"></div>
-                <div class="flex flex-col">
-                    <span class="font-serif tracking-[0.3em] text-sm text-white uppercase font-medium">VRX Exclusive</span>
-                    <span class="text-[7px] tracking-[0.4em] uppercase text-gold font-mono">Vector Risk Management K.K.</span>
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-24 flex items-center justify-between gap-2">
+            <a href="index.html" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
+                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-6 sm:h-8 w-auto object-contain shrink-0">
+                <div class="h-5 sm:h-6 w-[1px] bg-white/15 shrink-0"></div>
+                <div class="flex flex-col truncate">
+                    <span class="font-serif tracking-[0.18em] sm:tracking-[0.3em] text-xs sm:text-sm text-white uppercase font-medium truncate">VRX Exclusive</span>
+                    <span class="text-[6px] sm:text-[7px] tracking-[0.18em] sm:tracking-[0.4em] uppercase text-gold font-mono truncate">Vector Risk Management K.K.</span>
                 </div>
             </a>
 
-            <div class="flex items-center gap-6">
-                <select id="lang-select" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
+            <div class="flex items-center gap-2 sm:gap-5 shrink-0">
+                <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[10px] sm:text-[11px] font-mono tracking-widest text-gold py-1 px-1.5 sm:px-2 focus:outline-none focus:border-gold cursor-pointer">
                     <option value="en">EN</option>
                     <option value="jp">JP</option>
                     <option value="fr">FR</option>
                 </select>
-                <a href="index.html" class="px-5 py-2 editorial-border text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-darkBg transition-all font-mono"
-                   data-en="← Return to Home" data-jp="← ホームに戻る" data-fr="← Retour à l'accueil">← Return to Home</a>
+                <a href="index.html" class="px-3 sm:px-5 py-1.5 sm:py-2 editorial-border text-gold text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.25em] uppercase hover:bg-gold hover:text-darkBg transition-all font-mono whitespace-nowrap"
+                   data-en="← Home" data-jp="← ホーム" data-fr="← Accueil">← Home</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-40 pb-24 px-8 max-w-4xl mx-auto w-full">
-        <div class="mb-12">
-            <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block mb-3">03 // Regulatory Doctrine</span>
-            <h1 class="text-4xl md:text-5xl font-serif text-white" data-en="Statutory Compliance & Operational Doctrine" data-jp="法令遵守・業務規定" data-fr="Conformité Réglementaire & Doctrine Opérationnelle">Statutory Compliance & Operational Doctrine</h1>
+    <main class="flex-grow pt-28 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-8 max-w-4xl mx-auto w-full">
+        <div class="mb-8 sm:mb-12">
+            <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block mb-2 sm:mb-3">03 // Regulatory Doctrine</span>
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-serif text-white leading-tight" data-en="Statutory Compliance & Operational Doctrine" data-jp="法令遵守・業務規定" data-fr="Conformité Réglementaire & Doctrine Opérationnelle">Statutory Compliance & Operational Doctrine</h1>
         </div>
 
-        <div class="editorial-border bg-cardBg/50 p-8 md:p-12 space-y-10 text-xs md:text-sm font-light leading-relaxed">
+        <div class="editorial-border bg-cardBg/50 p-5 sm:p-8 md:p-12 space-y-8 sm:space-y-10 text-xs sm:text-sm font-light leading-relaxed">
             
-            <section class="space-y-3 border-b border-white/10 pb-8">
-                <h2 class="text-lg font-serif text-gold" data-en="Japanese Security Services Act (Article 19 Compliance)" data-jp="警備業法第19条（書面の交付）および法令遵守" data-fr="Loi Japonaise sur la Sécurité Privée (Conformité Article 19)">Japanese Security Services Act (Article 19 Compliance)</h2>
+            <section class="space-y-3 border-b border-white/10 pb-6 sm:pb-8">
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="1. Japanese Security Services Act (Article 19 Compliance)" data-jp="1. 警備業法第19条（書面の交付）および法令遵守" data-fr="1. Loi Japonaise sur la Sécurité Privée (Conformité Article 19)">1. Japanese Security Services Act (Article 19 Compliance)</h2>
                 <p data-en="Every VRX deployment—whether luxury retail protection, high-jewelry asset safeguarding, or executive close protection—is preceded by formal statutory documentation pursuant to Article 19 of the Japanese Security Services Act (警備業法第19条), defining exact post allocations, operational scope, and chains of command."
                    data-jp="ラグジュアリーリテール警備、ハイジュエリー資産保全、エグゼクティブ身辺警護を含むすべてのVRXの任務は、警備業法第19条に基づき、配置計画、業務範囲、指揮命令系統を明記した法定書面の交付を経て実施されます。"
                    data-fr="Chaque déploiement VRX — protection de boutiques de luxe, sécurisation de haute joaillerie ou protection rapprochée — fait l'objet d'une documentation statutaire préalable conformément à l'article 19 de la loi japonaise sur les services de sécurité (警備業法第19条), définissant précisément les postes, le périmètre et la chaîne de commandement.">
@@ -83,20 +88,20 @@
                 </p>
             </section>
 
-            <section class="space-y-3 border-b border-white/10 pb-8">
-                <h2 class="text-lg font-serif text-gold" data-en="Operator Vetting & International Pedigree" data-jp="警備員の厳格な審査および専門訓練" data-fr="Sélection des Opérateurs & Expérience Internationale">Operator Vetting & International Pedigree</h2>
+            <section class="space-y-3 border-b border-white/10 pb-6 sm:pb-8">
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="2. Operator Vetting & International Pedigree" data-jp="2. 警備員の厳格な審査および専門訓練" data-fr="2. Sélection des Opérateurs & Expérience Internationale">2. Operator Vetting & International Pedigree</h2>
                 <p data-en="VRX personnel undergo exhaustive background screening, statutory training mandated by Japanese law, and specialized tactical conditioning led by former diplomatic security directors and veterans of elite European law enforcement and mountain infantry units."
                    data-jp="VRXの要員は、警備業法に基づく法定教育に加え、元外交官警護責任者および欧州の精鋭治安部隊・山岳歩兵部隊出身者の指導による厳格な身元審査と専門訓練を修了しています。"
-                   data-fr="Les opérateurs VRX font l'objet d'une enquête de sécurité approfondie, de la formation légale japonaise obligatoire et d'une préparation tactique dirigée par d'anciens responsables de sécurité diplomatique et vétérans d'unités d'élite européennes.">
+                   data-fr="Les opérateurs VRX font l'objet d'une enquête de sécurité approfondie, de la formation légale japonaise obligatoire et d'une préparation tactique dirigée par d'anciens responsables de sécurité diplomatique et vétérans d'unités d'élite des forces de l'ordre et chasseurs alpins.">
                     VRX personnel undergo exhaustive background screening, statutory training mandated by Japanese law, and specialized tactical conditioning led by former diplomatic security directors and veterans of elite European law enforcement and mountain infantry units.
                 </p>
             </section>
 
             <section class="space-y-3">
-                <h2 class="text-lg font-serif text-gold" data-en="Anti-Social Forces Exclusion (Bōryokudan Haijo)" data-jp="反社会的勢力の排除に関する基本方針" data-fr="Exclusion des Forces Antisociales (Bōryokudan Haijo)">Anti-Social Forces Exclusion (Bōryokudan Haijo)</h2>
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="3. Anti-Social Forces Exclusion (Bōryokudan Haijo)" data-jp="3. 反社会的勢力の排除に関する基本方針" data-fr="3. Exclusion des Forces Antisociales (Bōryokudan Haijo)">3. Anti-Social Forces Exclusion (Bōryokudan Haijo)</h2>
                 <p data-en="In accordance with Tokyo Metropolitan Ordinances, Vector Risk Management K.K. maintains a zero-tolerance policy against anti-social forces (反社会的勢力) and conducts rigorous counterparty due diligence prior to accepting any mandate."
                    data-jp="東京都暴力団排除条例に基づき、ベクターリスクマネージメント株式会社は反社会的勢力との一切の関係を遮断し、すべての受託契約に先立ち厳格な取引先審査を実施しております。"
-                   data-fr="Conformément aux ordonnances de la métropole de Tokyo, Vector Risk Management K.K. applique une politique de tolérance zéro à l'égard des forces antisociales (反社会的勢力) et effectue une vérification préalable systématique avant toute mission.">
+                   data-fr="Conformément aux ordonnances de la métropole de Tokyo, Vector Risk Management K.K. applique une politique de tolérance zéro à l'égard des forces antisociales (反社会的勢力) et effectue une vérification préalable systématique de ses contreparties avant toute mission.">
                     In accordance with Tokyo Metropolitan Ordinances, Vector Risk Management K.K. maintains a zero-tolerance policy against anti-social forces (反社会的勢力) and conducts rigorous counterparty due diligence prior to accepting any mandate.
                 </p>
             </section>
@@ -105,24 +110,37 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-10 border-t border-white/10 text-center text-[10px] font-mono tracking-widest text-slate-400">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <span>Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo.</span>
-            <div class="flex space-x-8 uppercase">
-                <a href="legal.html" class="hover:text-gold transition-colors">Legal Notice</a>
-                <a href="privacy.html" class="hover:text-gold transition-colors">Privacy Policy</a>
-                <a href="compliance.html" class="text-gold">Compliance</a>
+    <footer class="py-10 border-t border-white/10 text-center text-[9px] sm:text-[10px] font-mono tracking-wider sm:tracking-widest text-slate-400">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <span data-en="Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo." data-jp="ベクターリスクマネージメント株式会社 (VRX部門) — 東京・虎ノ門" data-fr="Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.">Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo.</span>
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8 uppercase">
+                <a href="legal.html" class="hover:text-gold transition-colors" data-en="Legal Notice" data-jp="法的通知" data-fr="Mentions Légales">Legal Notice</a>
+                <a href="privacy.html" class="hover:text-gold transition-colors" data-en="Privacy Policy" data-jp="プライバシーポリシー" data-fr="Confidentialité">Privacy Policy</a>
+                <a href="compliance.html" class="text-gold" data-en="Compliance" data-jp="コンプライアンス" data-fr="Conformité">Compliance</a>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('lang-select').addEventListener('change', function() {
-            const lang = this.value;
+        const langSelect = document.getElementById('lang-select');
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang === 'jp' ? 'ja' : lang;
             document.querySelectorAll('[data-en]').forEach(el => {
                 const txt = el.getAttribute(`data-${lang}`);
                 if (txt) el.innerHTML = txt;
             });
+        }
+
+        const savedLang = localStorage.getItem('vrx_lang');
+        if (savedLang && ['en', 'jp', 'fr'].includes(savedLang)) {
+            langSelect.value = savedLang;
+            applyLanguage(savedLang);
+        }
+
+        langSelect.addEventListener('change', function() {
+            const lang = this.value;
+            localStorage.setItem('vrx_lang', lang);
+            applyLanguage(lang);
         });
     </script>
 </body>
