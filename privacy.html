@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <link rel="icon" type="image/png" href="assets/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Privacy Policy | VRX — Vector Risk Exclusive</title>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vector-risk-exclusive.com/privacy.html">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,22 +21,24 @@
                         gold: { DEFAULT: '#c5a059', light: '#dfbe7d', dark: '#9e7b39' }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                        serif: ['Playfair Display', 'Noto Serif JP', 'serif'],
                         mono: ['Courier New', 'monospace']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #070d19; color: #94a3b8; letter-spacing: 0.04em; }
-        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background-color: #070d19; color: #94a3b8; letter-spacing: 0.04em; overflow-x: hidden; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', 'Noto Serif JP', serif; }
         .grid-lines {
             background-image: linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
-            background-size: 80px 80px;
+            background-size: 60px 60px;
         }
         .editorial-border { border: 1px solid rgba(197, 160, 89, 0.25); }
         select option { background-color: #070d19; color: #c5a059; }
@@ -42,40 +47,40 @@
 <body class="bg-darkBg text-slate-300 antialiased selection:bg-gold selection:text-darkBg grid-lines min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-4 group">
-                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-8 w-auto object-contain">
-                <div class="h-6 w-[1px] bg-white/15"></div>
-                <div class="flex flex-col">
-                    <span class="font-serif tracking-[0.3em] text-sm text-white uppercase font-medium">VRX Exclusive</span>
-                    <span class="text-[7px] tracking-[0.4em] uppercase text-gold font-mono">Vector Risk Management K.K.</span>
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#070d19]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-24 flex items-center justify-between gap-2">
+            <a href="index.html" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
+                <img src="assets/vrx-logo.png" alt="VRX Logo" class="h-6 sm:h-8 w-auto object-contain shrink-0">
+                <div class="h-5 sm:h-6 w-[1px] bg-white/15 shrink-0"></div>
+                <div class="flex flex-col truncate">
+                    <span class="font-serif tracking-[0.18em] sm:tracking-[0.3em] text-xs sm:text-sm text-white uppercase font-medium truncate">VRX Exclusive</span>
+                    <span class="text-[6px] sm:text-[7px] tracking-[0.18em] sm:tracking-[0.4em] uppercase text-gold font-mono truncate">Vector Risk Management K.K.</span>
                 </div>
             </a>
 
-            <div class="flex items-center gap-6">
-                <select id="lang-select" class="bg-darkBg border border-white/15 text-[11px] font-mono tracking-widest text-gold py-1 px-2 focus:outline-none focus:border-gold cursor-pointer">
+            <div class="flex items-center gap-2 sm:gap-5 shrink-0">
+                <select id="lang-select" aria-label="Language selector" class="bg-darkBg border border-white/15 text-[10px] sm:text-[11px] font-mono tracking-widest text-gold py-1 px-1.5 sm:px-2 focus:outline-none focus:border-gold cursor-pointer">
                     <option value="en">EN</option>
                     <option value="jp">JP</option>
                     <option value="fr">FR</option>
                 </select>
-                <a href="index.html" class="px-5 py-2 editorial-border text-gold text-[10px] tracking-[0.25em] uppercase hover:bg-gold hover:text-darkBg transition-all font-mono"
-                   data-en="← Return to Home" data-jp="← ホームに戻る" data-fr="← Retour à l'accueil">← Return to Home</a>
+                <a href="index.html" class="px-3 sm:px-5 py-1.5 sm:py-2 editorial-border text-gold text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.25em] uppercase hover:bg-gold hover:text-darkBg transition-all font-mono whitespace-nowrap"
+                   data-en="← Home" data-jp="← ホーム" data-fr="← Accueil">← Home</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-40 pb-24 px-8 max-w-4xl mx-auto w-full">
-        <div class="mb-12">
-            <span class="text-[10px] uppercase tracking-[0.4em] text-gold font-mono block mb-3">02 // Data Protection Protocol</span>
-            <h1 class="text-4xl md:text-5xl font-serif text-white" data-en="Privacy Policy & Confidentiality" data-jp="プライバシーポリシー・個人情報保護方針" data-fr="Politique de Confidentialité">Privacy Policy & Confidentiality</h1>
+    <main class="flex-grow pt-28 sm:pt-40 pb-16 sm:pb-24 px-5 sm:px-8 max-w-4xl mx-auto w-full">
+        <div class="mb-8 sm:mb-12">
+            <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold font-mono block mb-2 sm:mb-3">02 // Data Protection Protocol</span>
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-serif text-white leading-tight" data-en="Privacy Policy & Confidentiality" data-jp="プライバシーポリシー・個人情報保護方針" data-fr="Politique de Confidentialité & Protection des Données">Privacy Policy & Confidentiality</h1>
         </div>
 
-        <div class="editorial-border bg-cardBg/50 p-8 md:p-12 space-y-10 text-xs md:text-sm font-light leading-relaxed">
+        <div class="editorial-border bg-cardBg/50 p-5 sm:p-8 md:p-12 space-y-8 sm:space-y-10 text-xs sm:text-sm font-light leading-relaxed">
             
-         <section class="space-y-3 border-b border-white/10 pb-8">
-                <h2 class="text-lg font-serif text-gold" data-en="1. Absolute Discretion & Legal Framework" data-jp="1. 厳格な守秘義務と法令遵守" data-fr="1. Discrétion Absolue & Cadre Légal">1. Absolute Discretion & Legal Framework</h2>
+            <section class="space-y-2.5 sm:space-y-3 border-b border-white/10 pb-6 sm:pb-8">
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="1. Absolute Discretion & Legal Framework" data-jp="1. 厳格な守秘義務と法令遵守" data-fr="1. Discrétion Absolue & Cadre Légal">1. Absolute Discretion & Legal Framework</h2>
                 <p data-en="Discretion is the cornerstone of Vector Risk Exclusive (VRX). Vector Risk Management K.K. processes all client, principal, and corporate information in strict adherence to Japan's Act on the Protection of Personal Information (個人情報保護法 — APPI) and international executive privacy standards."
                    data-jp="厳格な守秘義務はVector Risk Exclusive（VRX）の根幹です。ベクターリスクマネージメント株式会社は、日本の個人情報保護法（APPI）およびエグゼクティブ水準の国際プライバシー基準に基づき、お客様・ご依頼主および法人に関するすべての情報を厳重に管理いたします。"
                    data-fr="La discrétion est la pierre angulaire de Vector Risk Exclusive (VRX). Vector Risk Management K.K. traite l'ensemble des données des clients, mandataires et entreprises dans le strict respect de la loi japonaise sur la protection des informations personnelles (APPI) ainsi que des standards internationaux de confidentialité exécutive.">
@@ -83,56 +88,69 @@
                 </p>
             </section>
 
-            <section class="space-y-3 border-b border-white/10 pb-8">
-                <h2 class="text-lg font-serif text-gold" data-en="2. Scope of Collected Information" data-jp="2. 取得する情報および利用目的" data-fr="2. Données Collectées & Finalité">2. Scope of Collected Information</h2>
+            <section class="space-y-2.5 sm:space-y-3 border-b border-white/10 pb-6 sm:pb-8">
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="2. Scope of Collected Information" data-jp="2. 取得する情報および利用目的" data-fr="2. Données Collectées & Finalité">2. Scope of Collected Information</h2>
                 <p data-en="Information submitted via our confidential consultation channels (principal name, corporate entity, secure email, venue parameters, and operational requirements) is used exclusively to evaluate threat assessments, prepare security proposals, and execute mandated protection operations."
-                   data-jp="機密相談フォームを通じて提供された情報（氏名、法人名、メールアドレス、会場情報、警備要件）は、脅威評価の実施、警備計画書の作成、および受託した警備業務の遂行のみを目的として使用されます。"
-                   data-fr="Les informations transmises via nos canaux de consultation confidentielle (nom, entité, e-mail, paramètres de lieu et périmètre d'opération) sont utilisées exclusivement pour l'évaluation des risques, la préparation des propositions et l'exécution des missions.">
+                   data-jp="機密相談窓口を通じて提供された情報（ご依頼主名、法人名、メールアドレス、会場情報、警備要件）は、脅威評価の実施、警備計画書の作成、および受託した警備業務の遂行のみを目的として使用されます。"
+                   data-fr="Les informations transmises via nos canaux de consultation confidentielle (nom du mandataire, entité corporative, e-mail sécurisé, paramètres des lieux et exigences opérationnelles) sont utilisées exclusivement pour l'évaluation des menaces, la préparation des propositions de sécurité et l'exécution des missions de protection mandatées.">
                     Information submitted via our confidential consultation channels (principal name, corporate entity, secure email, venue parameters, and operational requirements) is used exclusively to evaluate threat assessments, prepare security proposals, and execute mandated protection operations.
                 </p>
             </section>
 
-            <section class="space-y-3 border-b border-white/10 pb-8">
-                <h2 class="text-lg font-serif text-gold" data-en="3. Zero Third-Party Disclosure" data-jp="3. 第三者提供の禁止" data-fr="3. Non-Divulgation aux Tiers">3. Zero Third-Party Disclosure</h2>
+            <section class="space-y-2.5 sm:space-y-3 border-b border-white/10 pb-6 sm:pb-8">
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="3. Zero Third-Party Disclosure" data-jp="3. 第三者提供の禁止" data-fr="3. Non-Divulgation aux Tiers">3. Zero Third-Party Disclosure</h2>
                 <p data-en="VRX never sells, rents, or discloses client identities, itineraries, asset locations, or operational records to third parties, except where strictly required by Japanese law enforcement authorities under valid legal mandate."
-                   data-jp="VRXは、法令に基づく公的機関からの正当な要請がある場合を除き、クライアントの身元、移動行程、資産所在地、または業務記録を第三者に開示・提供することは一切ありません。"
-                   data-fr="VRX ne vend, ne loue ni ne divulgue jamais l'identité de ses clients, leurs itinéraires, la localisation de leurs actifs ou leurs dossiers opérationnels à des tiers, sauf injonction légale des autorités japonaises.">
+                   data-jp="VRXは、法令に基づく公的機関からの正当な要請がある場合を除き、クライアントの身元、移動行程、資産所在地、または業務記録を第三者に売却、貸与、または開示することは一切ありません。"
+                   data-fr="VRX ne vend, ne loue ni ne divulgue jamais l'identité de ses clients, leurs itinéraires, la localisation de leurs actifs ou leurs dossiers opérationnels à des tiers, sauf obligation légale stricte sur mandat valide des autorités japonaises.">
                     VRX never sells, rents, or discloses client identities, itineraries, asset locations, or operational records to third parties, except where strictly required by Japanese law enforcement authorities under valid legal mandate.
                 </p>
             </section>
 
             <section class="space-y-2">
-                <h2 class="text-lg font-serif text-gold" data-en="4. Data Access & Erasure Requests" data-jp="4. 情報の開示・削除請求" data-fr="4. Droit d'Accès & de Suppression">4. Data Access & Erasure Requests</h2>
-                <p data-en="Principals may request immediate access, rectification, or permanent erasure of their operational records by contacting our Data Protection Officer at: "
+                <h2 class="text-base sm:text-lg font-serif text-gold" data-en="4. Data Access & Erasure Requests" data-jp="4. 情報の開示・削除請求" data-fr="4. Droit d'Accès & de Suppression">4. Data Access & Erasure Requests</h2>
+                <p data-en="Principals may request immediate access, rectification, or permanent erasure of their operational records by contacting our Data Protection Officer at:"
                    data-jp="ご自身の情報の開示、訂正、または完全な削除をご希望の場合は、以下の個人情報保護管理窓口までご連絡ください："
-                   data-fr="Les mandataires peuvent demander l'accès, la rectification ou la suppression définitive de leurs dossiers en contactant notre délégué à la protection des données : ">
+                   data-fr="Les mandataires peuvent demander l'accès immédiat, la rectification ou la suppression définitive de leurs dossiers opérationnels en contactant notre délégué à la protection des données :">
                     Principals may request immediate access, rectification, or permanent erasure of their operational records by contacting our Data Protection Officer at:
                 </p>
-                <p class="font-mono text-gold pt-1">jpalmieri@vector-risk-sec.com</p>
+                <p class="font-mono text-gold pt-1 break-all">jpalmieri@vector-risk-sec.com</p>
             </section>
 
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="py-10 border-t border-white/10 text-center text-[10px] font-mono tracking-widest text-slate-400">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <span>Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo.</span>
-            <div class="flex space-x-8 uppercase">
-                <a href="legal.html" class="hover:text-gold transition-colors">Legal Notice</a>
-                <a href="privacy.html" class="text-gold">Privacy Policy</a>
-                <a href="compliance.html" class="hover:text-gold transition-colors">Compliance</a>
+    <footer class="py-10 border-t border-white/10 text-center text-[9px] sm:text-[10px] font-mono tracking-wider sm:tracking-widest text-slate-400">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <span data-en="Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo." data-jp="ベクターリスクマネージメント株式会社 (VRX部門) — 東京・虎ノ門" data-fr="Vector Risk Management K.K. (Division VRX) — Toranomon, Tokyo.">Vector Risk Management K.K. (VRX Division) — Toranomon, Tokyo.</span>
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8 uppercase">
+                <a href="legal.html" class="hover:text-gold transition-colors" data-en="Legal Notice" data-jp="法的通知" data-fr="Mentions Légales">Legal Notice</a>
+                <a href="privacy.html" class="text-gold" data-en="Privacy Policy" data-jp="プライバシーポリシー" data-fr="Confidentialité">Privacy Policy</a>
+                <a href="compliance.html" class="hover:text-gold transition-colors" data-en="Compliance" data-jp="コンプライアンス" data-fr="Conformité">Compliance</a>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('lang-select').addEventListener('change', function() {
-            const lang = this.value;
+        const langSelect = document.getElementById('lang-select');
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang === 'jp' ? 'ja' : lang;
             document.querySelectorAll('[data-en]').forEach(el => {
                 const txt = el.getAttribute(`data-${lang}`);
                 if (txt) el.innerHTML = txt;
             });
+        }
+
+        const savedLang = localStorage.getItem('vrx_lang');
+        if (savedLang && ['en', 'jp', 'fr'].includes(savedLang)) {
+            langSelect.value = savedLang;
+            applyLanguage(savedLang);
+        }
+
+        langSelect.addEventListener('change', function() {
+            const lang = this.value;
+            localStorage.setItem('vrx_lang', lang);
+            applyLanguage(lang);
         });
     </script>
 </body>
